@@ -1,0 +1,479 @@
+
+.section-block {
+    padding-top: 87px;
+}
+
+.section-kicker {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: #a1a8b3;
+    font: 9px var(--mono);
+    letter-spacing: .16em;
+}
+
+.section-kicker>span:first-child {
+    color: var(--mint);
+}
+
+.section-kicker i {
+    width: 54px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(165, 241, 200, .6), transparent);
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: .75fr 1.15fr;
+    gap: 88px;
+    align-items: start;
+    margin-top: 38px;
+}
+
+.about-copy h2,
+.section-heading h2,
+.contact-copy h2 {
+    margin: 0 0 22px;
+    font: 500 clamp(35px, 5vw, 51px)/1.1 var(--display);
+    letter-spacing: -.06em;
+}
+
+.about-copy>p {
+    max-width: 600px;
+    margin: 0 0 14px;
+    color: #a9b0bb;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+.about-footnote {
+    margin-top: 25px;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    color: var(--mint);
+    font: 9px var(--mono);
+    letter-spacing: .09em;
+}
+
+.portrait-column {
+    width: 100%;
+    max-width: 322px;
+    margin-right: auto;
+    padding-right: 23px;
+}
+
+.portrait-frame {
+    position: relative;
+    padding: 12px;
+    border: 1px solid rgba(165, 241, 200, .22);
+    border-radius: 7px;
+    transform: rotate(1.5deg);
+    animation: portrait-float 6s ease-in-out infinite;
+}
+
+.portrait-image {
+    position: relative;
+    width: 100%;
+    height: 370px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    background-color: #151d22;
+    overflow: hidden;
+}
+
+/*
+ * Photo layer, positioned over the gradient placeholder.
+ *
+ * Replaces an inline background-image so the CSP does not need style-src
+ * 'unsafe-inline'. The parent is already position: relative and overflow: hidden,
+ * and the caption/coordinates come later in the DOM so they still paint on top.
+ */
+.portrait-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.portrait-image:not(.portrait-placeholder)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 52%, rgba(7, 12, 14, .35));
+}
+
+.portrait-placeholder {
+    display: grid;
+    place-items: center;
+    background: radial-gradient(ellipse at 52% 38%, #1d3535, #172329 42%, #111820 78%);
+}
+
+.portrait-placeholder::before,
+.portrait-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border: 1px solid rgba(165, 241, 200, .09);
+    border-radius: 50%;
+    transform: rotate(-18deg) scaleY(.48);
+}
+
+.portrait-placeholder::after {
+    inset: 18% 7%;
+    transform: rotate(40deg) scaleY(.45);
+    border-color: rgba(185, 162, 255, .11);
+}
+
+.portrait-halo {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: rgba(165, 241, 200, .16);
+    filter: blur(44px);
+}
+
+.portrait-initials {
+    z-index: 1;
+    font: 500 80px var(--display);
+    letter-spacing: -.09em;
+    color: rgba(214, 247, 227, .78);
+    text-shadow: 0 0 45px rgba(165, 241, 200, .17);
+}
+
+.portrait-add-note {
+    position: absolute;
+    bottom: 18px;
+    color: #7e8d89;
+    font: 8px var(--mono);
+    letter-spacing: .12em;
+}
+
+.portrait-coordinate {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    font: 8px var(--mono);
+    letter-spacing: .08em;
+    color: rgba(235, 245, 241, .7);
+}
+
+.portrait-side-label {
+    position: absolute;
+    right: -24px;
+    top: 44px;
+    writing-mode: vertical-rl;
+    font: 8px var(--mono);
+    letter-spacing: .12em;
+    color: #a5b1ae;
+}
+
+.portrait-side-label span {
+    color: var(--mint);
+    font-size: 13px;
+    margin-top: 9px;
+}
+
+.portrait-caption {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    color: var(--dim);
+    font: 8px var(--mono);
+    letter-spacing: .11em;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 27px 0 29px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 12px;
+}
+
+.heading-aside {
+    color: var(--dim);
+    font: 10px/1.7 var(--mono);
+    text-align: right;
+}
+/* =========================================================
+   ABOUT — RESPONSIVE IMPROVEMENTS
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .about-layout {
+        grid-template-columns: minmax(260px, .75fr) minmax(0, 1.15fr);
+        gap: 60px;
+    }
+
+    .portrait-column {
+        max-width: 300px;
+    }
+
+    .portrait-image {
+        height: 350px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .section-block {
+        padding-top: 70px;
+    }
+
+    .about-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 42px;
+        margin-top: 32px;
+    }
+
+    .portrait-column {
+        width: min(380px, 100%);
+        max-width: 380px;
+        margin: 0 auto;
+        padding-right: 0;
+    }
+
+    .portrait-frame {
+        padding: 11px;
+    }
+
+    .portrait-image {
+        height: 390px;
+    }
+
+    .portrait-side-label {
+        right: -21px;
+    }
+
+    .about-copy {
+        width: 100%;
+    }
+
+    .about-copy h2 {
+        font-size: clamp(34px, 6vw, 48px);
+        line-height: 1.08;
+        margin-bottom: 20px;
+    }
+
+    .about-copy > p {
+        max-width: 680px;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .section-block {
+        padding-top: 58px;
+    }
+
+    .section-kicker {
+        gap: 10px;
+        font-size: 8px;
+        letter-spacing: .13em;
+    }
+
+    .section-kicker i {
+        width: 40px;
+    }
+
+    .about-layout {
+        gap: 34px;
+        margin-top: 27px;
+    }
+
+    .portrait-column {
+        width: min(340px, 100%);
+    }
+
+    .portrait-frame {
+        padding: 9px;
+        border-radius: 6px;
+    }
+
+    .portrait-image {
+        height: min(420px, 105vw);
+        min-height: 300px;
+    }
+
+    .portrait-coordinate {
+        left: 15px;
+        top: 15px;
+        font-size: 7px;
+    }
+
+    .portrait-side-label {
+        right: -18px;
+        top: 38px;
+        font-size: 7px;
+        letter-spacing: .1em;
+    }
+
+    .portrait-side-label span {
+        font-size: 11px;
+        margin-top: 7px;
+    }
+
+    .portrait-caption {
+        margin-top: 14px;
+        font-size: 7px;
+        letter-spacing: .08em;
+    }
+
+    .about-copy h2 {
+        font-size: clamp(32px, 8vw, 44px);
+        letter-spacing: -.055em;
+        margin-bottom: 18px;
+    }
+
+    .about-copy > p {
+        font-size: 13px;
+        line-height: 1.8;
+        margin-bottom: 13px;
+    }
+
+    .about-footnote {
+        margin-top: 22px;
+        gap: 7px;
+        font-size: 8px;
+        letter-spacing: .07em;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .section-block {
+        padding-top: 48px;
+    }
+
+    .about-layout {
+        gap: 29px;
+        margin-top: 23px;
+    }
+
+    .portrait-column {
+        width: min(300px, calc(100% - 22px));
+    }
+
+    .portrait-frame {
+        padding: 8px;
+    }
+
+    .portrait-image {
+        height: min(370px, 108vw);
+        min-height: 270px;
+    }
+
+    .portrait-coordinate {
+        left: 13px;
+        top: 13px;
+        font-size: 6px;
+    }
+
+    .portrait-side-label {
+        right: -16px;
+        top: 31px;
+        font-size: 6px;
+    }
+
+    .portrait-side-label span {
+        font-size: 10px;
+    }
+
+    .portrait-caption {
+        margin-top: 12px;
+        font-size: 6px;
+    }
+
+    .about-copy h2 {
+        font-size: clamp(29px, 9vw, 39px);
+        line-height: 1.08;
+    }
+
+    .about-copy > p {
+        font-size: 12.5px;
+        line-height: 1.75;
+    }
+
+    .about-footnote {
+        font-size: 7px;
+        letter-spacing: .055em;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+    .about-layout {
+        gap: 25px;
+    }
+
+    .portrait-column {
+        width: calc(100% - 16px);
+    }
+
+    .portrait-image {
+        height: 290px;
+        min-height: 0;
+    }
+
+    .portrait-side-label {
+        display: none;
+    }
+
+    .portrait-caption {
+        font-size: 5.5px;
+    }
+
+    .about-copy h2 {
+        font-size: 28px;
+    }
+
+    .about-copy > p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .about-footnote {
+        font-size: 6.5px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .portrait-frame {
+        animation: none;
+    }
+}

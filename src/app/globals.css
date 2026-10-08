@@ -1,0 +1,126 @@
+/*
+ * Single stylesheet entry point. Next.js only allows global CSS to be imported here, so this
+ * file is the manifest for every stylesheet in the app.
+ *
+ * ORDER IS LOAD-BEARING. These imports replace one 2083-line base.css, and they are listed in
+ * the exact sequence that file used, because the cascade depends on it: responsive.css
+ * deliberately comes last so its media-query overrides beat the base rules they refine, and
+ * keyframes.css comes last because @keyframes are resolved at their use site.
+ *
+ * Component stylesheets are split by folder. Anything a single component owns lives beside it
+ * (components/about/About.css); genuinely shared rules stay in styles/. When adding a
+ * stylesheet, match the specificity and ordering intent of what is already here rather than
+ * appending blindly.
+ */
+
+@import "../styles/theme.css";
+@import "../styles/reset.css";
+@import "../styles/buttons.css";
+@import "../components/contact/footer.css";
+@import "../components/navigation/BottomNav.css";
+@import "../styles/reveal.css";
+@import "../components/admin/admin.css";
+@import "../components/resume/ResumeView.css";
+@import "../styles/keyframes.css";
+@import "../styles/responsive.css";
+/* =========================================================
+   GLOBAL RESPONSIVE FOUNDATION
+   ========================================================= */
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+a {
+    max-width: 100%;
+}
+
+/* Prevent long words/URLs from breaking layouts */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a {
+    overflow-wrap: break-word;
+}
+
+/* =========================================================
+   PUBLIC PORTFOLIO SECTION FOUNDATION
+   ========================================================= */
+
+section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* =========================================================
+   RESPONSIVE CONTAINER
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    section {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}

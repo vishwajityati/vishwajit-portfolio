@@ -1,0 +1,423 @@
+/* Print-ready resume layout. */
+
+.resume-page {
+    min-height: 100vh;
+    padding: 25px 20px 50px;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.resume-toolbar {
+    width: min(790px, 100%);
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resume-sheet {
+    width: min(790px, 100%);
+    margin: 0 auto;
+    padding: 45px 52px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: #10151e;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, .26);
+}
+
+.resume-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.resume-heading .eyebrow {
+    margin-bottom: 9px;
+}
+
+.resume-heading h1 {
+    margin: 0;
+    font: 600 39px var(--display);
+    letter-spacing: -.06em;
+}
+
+.resume-intro {
+    max-width: 440px;
+    margin: 8px 0 0;
+    color: #a7b0bb;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.resume-contact {
+    min-width: 165px;
+    display: grid;
+    align-content: center;
+    justify-items: end;
+    gap: 6px;
+    color: #a7b0bb;
+    font-size: 9px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.resume-section {
+    margin-top: 23px;
+}
+
+.resume-section>h2 {
+    margin: 0 0 10px;
+    color: var(--mint);
+    font: 9px var(--mono);
+    letter-spacing: .13em;
+}
+
+.resume-section>p,
+.resume-entry>p {
+    margin: 5px 0;
+    color: #a7b0bb;
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.resume-entry {
+    margin: 0 0 13px;
+}
+
+.resume-entry-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+}
+
+.resume-entry-heading h3 {
+    margin: 0;
+    color: var(--text);
+    font: 500 12px var(--display);
+}
+
+.resume-entry-heading span {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font: 8px var(--mono);
+}
+
+.resume-entry ul {
+    margin: 6px 0 0;
+    padding-left: 15px;
+    color: #a7b0bb;
+    font-size: 9px;
+    line-height: 1.65;
+}
+
+.resume-entry li::marker {
+    color: var(--mint);
+}
+/* =========================================================
+   RESUME — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .resume-page {
+        padding: 22px 16px 45px;
+    }
+
+    .resume-toolbar,
+    .resume-sheet {
+        width: min(790px, 100%);
+    }
+
+    .resume-sheet {
+        padding: 38px 38px;
+    }
+
+    .resume-heading {
+        gap: 20px;
+    }
+
+    .resume-heading h1 {
+        font-size: clamp(32px, 5vw, 39px);
+    }
+
+    .resume-intro {
+        max-width: 100%;
+        font-size: 11px;
+    }
+
+    .resume-contact {
+        min-width: 145px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 700px) {
+    .resume-page {
+        padding: 18px 12px 35px;
+    }
+
+    .resume-toolbar {
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .resume-toolbar .admin-back,
+    .resume-toolbar .button {
+        min-height: 40px;
+    }
+
+    .resume-sheet {
+        padding: 28px 25px;
+        border-radius: 6px;
+    }
+
+    .resume-heading {
+        display: block;
+        padding-bottom: 17px;
+    }
+
+    .resume-heading h1 {
+        font-size: clamp(30px, 8vw, 38px);
+    }
+
+    .resume-intro {
+        margin-top: 9px;
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    .resume-contact {
+        min-width: 0;
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px 14px;
+        font-size: 8px;
+        text-align: left;
+    }
+
+    .resume-section {
+        margin-top: 21px;
+    }
+
+    .resume-section > h2 {
+        margin-bottom: 9px;
+        font-size: 8px;
+    }
+
+    .resume-section > p,
+    .resume-entry > p {
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .resume-entry {
+        margin-bottom: 12px;
+    }
+
+    .resume-entry-heading {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .resume-entry-heading h3 {
+        min-width: 0;
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .resume-entry-heading span {
+        font-size: 7px;
+        text-align: right;
+    }
+
+    .resume-entry ul {
+        margin-top: 5px;
+        padding-left: 14px;
+        font-size: 8px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-page {
+        padding: 14px 9px 30px;
+    }
+
+    .resume-toolbar {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .resume-toolbar .admin-back,
+    .resume-toolbar .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .resume-sheet {
+        padding: 23px 17px;
+        border-radius: 5px;
+    }
+
+    .resume-heading h1 {
+        font-size: clamp(27px, 9vw, 34px);
+    }
+
+    .resume-heading .eyebrow {
+        margin-bottom: 7px;
+        font-size: 7px;
+    }
+
+    .resume-intro {
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .resume-contact {
+        margin-top: 13px;
+        gap: 5px 10px;
+        font-size: 7px;
+    }
+
+    .resume-section {
+        margin-top: 19px;
+    }
+
+    .resume-section > h2 {
+        font-size: 7px;
+        letter-spacing: .11em;
+    }
+
+    .resume-section > p,
+    .resume-entry > p {
+        font-size: 8.5px;
+        line-height: 1.7;
+    }
+
+    .resume-entry-heading {
+        display: block;
+    }
+
+    .resume-entry-heading h3 {
+        font-size: 10px;
+    }
+
+    .resume-entry-heading span {
+        display: block;
+        margin-top: 4px;
+        font-size: 6.5px;
+        text-align: left;
+    }
+
+    .resume-entry ul {
+        padding-left: 13px;
+        font-size: 7.5px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 360px) {
+    .resume-page {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .resume-sheet {
+        padding: 20px 13px;
+    }
+
+    .resume-heading h1 {
+        font-size: 25px;
+    }
+
+    .resume-intro {
+        font-size: 8px;
+    }
+
+    .resume-contact {
+        font-size: 6.5px;
+    }
+
+    .resume-section > h2 {
+        font-size: 6.5px;
+    }
+
+    .resume-section > p,
+    .resume-entry > p {
+        font-size: 8px;
+    }
+
+    .resume-entry-heading h3 {
+        font-size: 9px;
+    }
+
+    .resume-entry-heading span {
+        font-size: 6px;
+    }
+
+    .resume-entry ul {
+        font-size: 7px;
+        line-height: 1.65;
+    }
+}
+
+/* =========================================================
+   RESUME — PRINT
+   ========================================================= */
+
+@media print {
+    .resume-page {
+        padding: 0;
+        background: #fff;
+        color: #000;
+    }
+
+    .resume-toolbar {
+        display: none;
+    }
+
+    .resume-sheet {
+        width: 100%;
+        margin: 0;
+        padding: 30px 35px;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: #fff;
+        color: #000;
+    }
+
+    .resume-heading {
+        border-color: #ccc;
+    }
+
+    .resume-heading h1,
+    .resume-entry-heading h3 {
+        color: #111;
+    }
+
+    .resume-intro,
+    .resume-section > p,
+    .resume-entry > p,
+    .resume-entry ul,
+    .resume-contact {
+        color: #333;
+    }
+
+    .resume-section > h2 {
+        color: #111;
+    }
+
+    .resume-entry-heading span {
+        color: #555;
+    }
+
+    .resume-entry li::marker {
+        color: #111;
+    }
+}

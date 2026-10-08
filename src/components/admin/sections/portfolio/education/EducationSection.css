@@ -1,0 +1,63 @@
+/* =========================================================
+   ADMIN EDUCATION SECTION
+   ========================================================= */
+
+.education-section {
+  position: relative;
+}
+
+/* ---------------------------------------------------------
+   Education Fields
+   --------------------------------------------------------- */
+
+.education-section .content-fields-grid {
+  margin-top: 24px;
+  gap: 15px;
+}
+
+/* Summary and Beyond the classroom */
+.education-section .content-fields-grid > :nth-child(4),
+.education-section .content-fields-grid > :nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+/* ---------------------------------------------------------
+   Field Hover / Focus
+   --------------------------------------------------------- */
+
+.education-section .content-field {
+  transition: transform 0.2s ease;
+}
+
+.education-section .content-field:focus-within {
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .education-section .content-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-section .content-fields-grid > :nth-child(4),
+  .education-section .content-fields-grid > :nth-child(5) {
+    grid-column: auto;
+  }
+}
+
+/* ---------------------------------------------------------
+   Reduced Motion
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .education-section .content-field {
+    transition: none;
+  }
+
+  .education-section .content-field:focus-within {
+    transform: none;
+  }
+}

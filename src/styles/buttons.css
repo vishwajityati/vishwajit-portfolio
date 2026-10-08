@@ -1,0 +1,47 @@
+/* Shared .button primitives used across the public site and admin. */
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: 43px;
+    padding: 0 17px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button:disabled {
+    opacity: .6;
+    cursor: wait;
+    transform: none;
+}
+
+.button-primary {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: #0a1410;
+}
+
+.button-primary:hover {
+    background: #c1f4d8;
+    border-color: #c1f4d8;
+}
+
+.button-quiet {
+    color: var(--text);
+    background: rgba(255, 255, 255, .025);
+}
+
+.button-quiet:hover {
+    border-color: rgba(165, 241, 200, .48);
+    background: rgba(165, 241, 200, .05);
+}

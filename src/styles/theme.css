@@ -1,0 +1,20 @@
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #f1f1ed;
+  background: #080b11;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --bg: #080b11;
+  --panel: #10151e;
+  --panel-soft: rgba(16, 21, 30, .72);
+  --text: #f1f1ed;
+  --muted: #9299a6;
+  --dim: #626b7a;
+  --line: rgba(203, 216, 233, .13);
+  --mint: #a5f1c8;
+  --cyan: #76d9d1;
+  --purple: #b9a2ff;
+  --mono: "DM Mono", monospace;
+  --display: "Space Grotesk", sans-serif;
+}

@@ -1,0 +1,4 @@
+ALTER TABLE "Admin"
+ADD COLUMN "totpEnabled" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN "totpSecret" TEXT,
+ADD COLUMN "lastTotpStep" INTEGER;

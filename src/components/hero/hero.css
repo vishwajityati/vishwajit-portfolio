@@ -1,0 +1,898 @@
+.portfolio,
+.admin-page,
+.loading-screen {
+    min-height: 100vh;
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    background: var(--bg);
+}
+
+.site-backdrop {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.backdrop-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .15;
+    background-image: linear-gradient(rgba(165, 241, 200, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(165, 241, 200, .05) 1px, transparent 1px);
+    background-size: 76px 76px;
+    mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+.backdrop-glow {
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    filter: blur(105px);
+    opacity: .1;
+    animation: glow-drift 22s ease-in-out infinite alternate;
+}
+
+.glow-one {
+    top: 4%;
+    left: 25%;
+    background: #54c7ac;
+}
+
+.glow-two {
+    top: 1080px;
+    right: -20%;
+    background: #6659bf;
+    animation-delay: -7s;
+}
+
+.glow-three {
+    top: 2740px;
+    left: -18%;
+    background: #388b8d;
+    animation-delay: -11s;
+}
+
+.backdrop-orbit {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 58%;
+    top: 11%;
+    border: 1px solid rgba(165, 241, 200, .07);
+    border-radius: 50%;
+    transform: rotateX(69deg) rotate(-20deg);
+    animation: orbit-drift 30s linear infinite;
+}
+
+.backdrop-orbit::before,
+.backdrop-orbit::after {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border: 1px solid rgba(165, 241, 200, .05);
+    border-radius: 50%;
+}
+
+.backdrop-orbit::after {
+    inset: 24%;
+}
+
+.backdrop-orbit span {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--mint);
+    box-shadow: 0 0 15px var(--mint);
+    border-radius: 50%;
+    top: 28%;
+    left: 8%;
+}
+
+.orbit-two {
+    width: 310px;
+    height: 310px;
+    left: 5%;
+    top: 68%;
+    animation-duration: 38s;
+    animation-direction: reverse;
+}
+
+.orbit-two span {
+    background: var(--purple);
+    box-shadow: 0 0 15px var(--purple);
+}
+
+.site-header {
+    height: 82px;
+    width: min(1120px, calc(100% - 64px));
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 5;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    display: inline-grid;
+    place-items: center;
+    font: 600 16px var(--display);
+    color: #09100c;
+    background: var(--mint);
+    border-radius: 9px 9px 9px 3px;
+}
+
+.brand-name {
+    font: 600 13px var(--display);
+    letter-spacing: .025em;
+}
+
+.brand-name>span {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.header-meta {
+    display: grid;
+    justify-items: end;
+    gap: 5px;
+}
+
+.header-status,
+.header-year {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 9px var(--mono);
+    letter-spacing: .11em;
+    color: #a6adb8;
+}
+
+.header-status {
+    color: var(--mint);
+}
+
+.header-year {
+    color: #c4cbd2;
+}
+
+.status-dot {
+    position: relative;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 11px rgba(165, 241, 200, .75);
+    flex: 0 0 auto;
+}
+
+.status-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid var(--mint);
+    border-radius: inherit;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+.year-divider {
+    color: var(--mint);
+}
+
+.section-shell {
+    width: min(1000px, calc(100% - 64px));
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero {
+    min-height: min(790px, calc(100svh - 82px));
+    min-height: max(670px, min(790px, calc(100svh - 82px)));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.hero-annotation {
+    position: absolute;
+    top: 47px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font: 9px var(--mono);
+    letter-spacing: .15em;
+}
+
+.annotation-line {
+    width: 26px;
+    height: 1px;
+    background: var(--mint);
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 1;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.hero-eyebrow,
+.eyebrow {
+    color: var(--mint);
+    font: 10px var(--mono);
+    letter-spacing: .15em;
+}
+
+.hero-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 21px;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+.hero h1 {
+    max-width: 100%;
+    margin: 0;
+    font: 600 clamp(66px, 9.3vw, 117px)/.94 var(--display);
+    letter-spacing: -.085em;
+}
+
+.hero-name-primary {
+    color: var(--text);
+}
+
+.gradient-text {
+    background: linear-gradient(105deg, var(--mint) 5%, #84e6e3 49%, #c3a8ff 97%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 180% auto;
+    animation: gradient-shift 8s ease infinite;
+}
+
+.hero-star {
+    display: inline-block;
+    margin-left: 18px;
+    font-size: .23em;
+    color: var(--mint);
+    vertical-align: top;
+    animation: slow-spin 18s linear infinite;
+}
+
+.hero-intro {
+    max-width: 440px;
+    margin: 25px auto 23px;
+    color: #b3bac5;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    flex-wrap: wrap;
+}
+
+.resume-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 6px;
+    color: var(--muted);
+    font: 10px var(--mono);
+}
+
+.resume-download:hover {
+    color: var(--mint);
+}
+
+.hero-side-note {
+    position: absolute;
+    right: 0;
+    top: 42%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: var(--muted);
+    font: 9px var(--mono);
+    letter-spacing: .15em;
+    writing-mode: vertical-rl;
+}
+
+.hero-side-note svg {
+    color: var(--mint);
+    animation: bob 1.8s ease-in-out infinite;
+}
+
+.hero-bottom {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--dim);
+    font: 9px var(--mono);
+    letter-spacing: .12em;
+}
+
+.hero-bottom-center {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-bottom-center svg {
+    color: var(--mint);
+}
+
+.hero-orbit-mark {
+    position: absolute;
+    right: 8%;
+    top: 26%;
+    width: 145px;
+    aspect-ratio: 1;
+    border: 1px solid rgba(165, 241, 200, .12);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    animation: slow-spin 28s linear infinite;
+}
+
+.hero-orbit-mark::before,
+.hero-orbit-mark::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(165, 241, 200, .08);
+}
+
+.hero-orbit-mark::before {
+    inset: 14px;
+}
+
+.hero-orbit-mark::after {
+    inset: -15px;
+    border-style: dashed;
+    opacity: .5;
+}
+
+.hero-orbit-mark span {
+    font: 500 40px var(--display);
+    color: rgba(165, 241, 200, .65);
+    animation: slow-spin 28s linear infinite reverse;
+}
+
+.hero-orbit-mark i,
+.hero-orbit-mark b {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+    top: 16px;
+    left: 21px;
+    box-shadow: 0 0 18px var(--mint);
+}
+
+.hero-orbit-mark b {
+    background: var(--purple);
+    box-shadow: 0 0 18px var(--purple);
+    top: auto;
+    left: auto;
+    bottom: 3px;
+    right: 39px;
+}
+.resume-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.resume-main-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.resume-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 190px;
+  padding: 6px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  background: #0d171b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+  z-index: 1000;
+}
+
+.resume-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  border-radius: 7px;
+  font-size: 14px;
+
+  transition: background 0.2s ease;
+}
+
+.resume-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.hero-role {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  animation: heroRoleIn 0.45s ease;
+}
+
+@keyframes heroRoleIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+}
+/* =========================================================
+   HERO — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .site-header {
+    width: min(1120px, calc(100% - 40px));
+  }
+
+  .section-shell {
+    width: min(1000px, calc(100% - 40px));
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 9vw, 100px);
+  }
+
+  .hero-orbit-mark {
+    right: 3%;
+  }
+
+  .hero-side-note {
+    right: -4px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .site-header {
+    height: 74px;
+    width: calc(100% - 32px);
+  }
+
+  .section-shell {
+    width: calc(100% - 32px);
+  }
+
+  .hero {
+    min-height: max(620px, calc(100svh - 74px));
+    padding-top: 20px;
+  }
+
+  .hero-annotation {
+    top: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(54px, 10vw, 88px);
+    letter-spacing: -0.075em;
+  }
+
+  .hero-intro {
+    max-width: 500px;
+    font-size: 15px;
+  }
+
+  .hero-orbit-mark {
+    width: 115px;
+    right: 2%;
+    top: 23%;
+  }
+
+  .hero-orbit-mark span {
+    font-size: 32px;
+  }
+
+  .hero-side-note {
+    display: none;
+  }
+
+  .hero-bottom {
+    bottom: 22px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .site-header {
+    height: 68px;
+    width: calc(100% - 32px);
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .brand-name {
+    font-size: 12px;
+  }
+
+  .header-status,
+  .header-year {
+    font-size: 8px;
+  }
+
+  .header-meta {
+    gap: 3px;
+  }
+
+  .hero {
+    min-height: max(610px, calc(100svh - 68px));
+    padding-top: 15px;
+    justify-content: center;
+  }
+
+  .hero-annotation {
+    position: static;
+    justify-content: center;
+    margin-bottom: 28px;
+    font-size: 8px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .hero-eyebrow {
+    gap: 8px;
+    margin-bottom: 17px;
+    font-size: 8px;
+    letter-spacing: .11em;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 76px);
+    line-height: .96;
+    letter-spacing: -0.075em;
+  }
+
+  .hero-star {
+    margin-left: 8px;
+  }
+
+  .hero-intro {
+    max-width: 430px;
+    margin: 20px auto 18px;
+    padding: 0 8px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hero-role {
+    margin-top: 8px;
+    font-size: .65rem;
+    letter-spacing: .11em;
+  }
+
+  .hero-actions {
+    gap: 9px;
+  }
+
+  .resume-menu {
+    max-width: 100%;
+  }
+
+  .resume-dropdown {
+    right: 0;
+    width: 180px;
+  }
+
+  .resume-option {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .hero-orbit-mark {
+    width: 90px;
+    right: 1%;
+    top: 18%;
+    opacity: .65;
+  }
+
+  .hero-orbit-mark span {
+    font-size: 27px;
+  }
+
+  .hero-orbit-mark::after {
+    inset: -10px;
+  }
+
+  .hero-bottom {
+    bottom: 18px;
+    gap: 12px;
+    font-size: 7px;
+    letter-spacing: .08em;
+  }
+
+  .hero-bottom > * {
+    min-width: 0;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .site-header {
+    width: calc(100% - 24px);
+    height: 62px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px 8px 8px 3px;
+    font-size: 14px;
+  }
+
+  .brand-name {
+    font-size: 11px;
+  }
+
+  .header-meta {
+    justify-items: end;
+  }
+
+  .header-status,
+  .header-year {
+    font-size: 7px;
+    letter-spacing: .08em;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero {
+    min-height: max(580px, calc(100svh - 62px));
+  }
+
+  .hero-eyebrow {
+    font-size: 7px;
+    letter-spacing: .08em;
+    white-space: nowrap;
+  }
+
+  .hero h1 {
+    font-size: clamp(43px, 14vw, 64px);
+    letter-spacing: -0.07em;
+  }
+
+  .hero-star {
+    font-size: .2em;
+    margin-left: 5px;
+  }
+
+  .hero-intro {
+    max-width: 350px;
+    padding: 0 5px;
+    margin: 17px auto 15px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .hero-role {
+    font-size: .58rem;
+    letter-spacing: .09em;
+  }
+
+  .hero-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .hero-actions .button {
+    min-height: 40px;
+  }
+
+  .resume-dropdown {
+    width: 170px;
+  }
+
+  .hero-orbit-mark {
+    width: 70px;
+    top: 15%;
+    right: 0;
+    opacity: .45;
+  }
+
+  .hero-orbit-mark span {
+    font-size: 22px;
+  }
+
+  .hero-orbit-mark i,
+  .hero-orbit-mark b {
+    width: 4px;
+    height: 4px;
+  }
+
+  .hero-bottom {
+    bottom: 14px;
+    font-size: 6px;
+    letter-spacing: .05em;
+  }
+
+  .hero-bottom-center {
+    gap: 3px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .site-header {
+    width: calc(100% - 20px);
+  }
+
+  .brand-name {
+    font-size: 10px;
+  }
+
+  .header-status,
+  .header-year {
+    font-size: 6px;
+  }
+
+  .hero {
+    min-height: 560px;
+  }
+
+  .hero-eyebrow {
+    font-size: 6px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 14vw, 54px);
+  }
+
+  .hero-intro {
+    font-size: 12px;
+  }
+
+  .hero-role {
+    font-size: .52rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions > * {
+    width: min(100%, 220px);
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resume-menu {
+    width: min(100%, 220px);
+  }
+
+  .resume-main-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resume-dropdown {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .hero-orbit-mark {
+    display: none;
+  }
+
+  .hero-bottom {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text,
+  .hero-star,
+  .hero-orbit-mark,
+  .hero-orbit-mark span,
+  .hero-orbit-mark svg,
+  .hero-role {
+    animation: none;
+  }
+}

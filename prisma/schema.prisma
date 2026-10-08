@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model Portfolio {
+  id      Int    @id @default(1)
+  content String
+}
+
+model Admin {
+  id Int @id @default(1)
+  /**
+   * Optional. The access code is the only credential required to sign in, so email is
+   * no longer collected at setup; it is kept for the authenticator-app label and the
+   * admin account panel.
+   */
+  email String? @unique
+  /** bcrypt hash of the access code. The code itself is never stored or logged. */
+  accessCodeHash String
+  totpEnabled    Boolean @default(false)
+  totpSecret     String?
+  lastTotpStep   Int?
+  /// Bumped whenever the access code changes. Sessions carry the value they were
+  /// issued with, so a mismatch invalidates every other signed-in device.
+  sessionVersion Int     @default(0)
+}
+
+model LoginAttempt {
+  key       String   @id
+  count     Int      @default(0)
+  resetAt   DateTime
+  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String   @default("")
+  message           String
+  notificationSent  Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  readAt            DateTime?
+
+  @@index([createdAt])
+  @@index([readAt])
+}

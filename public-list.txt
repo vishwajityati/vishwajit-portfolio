@@ -1,0 +1,2 @@
+﻿D:\Portfolio\portfolio\public\images\.gitkeep
+D:\Portfolio\portfolio\public\resume\.gitkeep

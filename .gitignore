@@ -1,0 +1,16 @@
+.next/
+node_modules/
+coverage/
+*.log
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.neon
+/prisma/*.db
+/prisma/*.db-journal
+/prisma/*.db-shm
+/prisma/*.db-wal
+/server/data/
+/dist/
+.vercel

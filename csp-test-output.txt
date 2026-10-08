@@ -1,0 +1,11 @@
+PASS built policy contains a nonce and permits 'unsafe-inline' only outside production
+PASS the posture check reports production strictness even when running in development
+PASS About renders the portrait as an <img> with no inline style when photoUrl is set
+PASS ProjectCard renders the screenshot as an <img> with no inline style when imageUrl is set
+PASS About still renders the initials placeholder when photoUrl is empty
+PASS Skills renders every skill in its own anchorable section with no inline style
+PASS navigation includes the skills section
+PASS Skills shows an empty state when no skills are configured
+PASS proficiency indicators use fixed dot classes with no inline styles
+PASS a record stored with the old flat skills list migrates instead of falling back to defaults
+PASS no source file sets an inline style attribute or uses dangerouslySetInnerHTML
