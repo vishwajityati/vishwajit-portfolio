@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
         session.pendingAdminId = undefined;
         session.pendingTotpUntil = undefined;
         await session.save();
-        return NextResponse.json({ error: "Sign-in expired. Enter your email and password again." }, { status: 401 });
+        return NextResponse.json({ error: "Sign-in expired. Enter your access code again." }, { status: 401 });
       }
 
       const admin = await prisma.admin.findUnique({ where: { id: 1 }, select: { totpEnabled: true, totpSecret: true, lastTotpStep: true, sessionVersion: true } });

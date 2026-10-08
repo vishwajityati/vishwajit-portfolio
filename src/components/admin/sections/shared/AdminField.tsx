@@ -19,6 +19,7 @@ export function AdminField({
 }: AdminFieldProps) {
   return (
     <label className={multiline ? "content-field content-field-wide" : "content-field"}>
+      <span className="content-field-label">{label}</span>
       {multiline ? (
         <textarea rows={3} value={value} placeholder={placeholder} onChange={(event) => onChange(event.target.value)} />
       ) : (

@@ -76,7 +76,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Enter a valid name and email, use at most 10 digits for your phone, and enter a message." }, { status: 400 });
     }
 
-    const admin = await prisma.admin.findUnique({ where: { id: 1 }, select: { email: true } });
+    const [admin, portfolio] = await Promise.all([
+      prisma.admin.findUnique({ where: { id: 1 }, select: { email: true } }),
+      prisma.portfolio.findUnique({ where: { id: 1 }, select: { content: true } })
+    ]);
     if (!admin) {
       return NextResponse.json({ error: "The portfolio owner is not currently accepting messages." }, { status: 503 });
     }
@@ -86,9 +89,22 @@ export async function POST(request: NextRequest) {
 
     let notificationSent = false;
     const emailConfiguration = getContactEmailConfigurationStatus();
-    // The admin email is optional now that sign-in uses an access code, so it can no longer
-    // be assumed to be a usable recipient. CONTACT_EMAIL_TO still takes precedence.
-    const recipient = process.env.CONTACT_EMAIL_TO?.trim() || admin.email || "";
+    let publicEmail = "";
+    try {
+      const parsedContent: unknown = portfolio?.content ? JSON.parse(portfolio.content) : null;
+      if (typeof parsedContent === "object" && parsedContent !== null && "contact" in parsedContent) {
+        const contact = parsedContent.contact;
+        if (typeof contact === "object" && contact !== null && "email" in contact && typeof contact.email === "string") {
+          publicEmail = contact.email.trim();
+        }
+      }
+    } catch {
+      // Invalid portfolio content must not prevent the message from being stored.
+    }
+
+    // Explicit SMTP routing wins. The admin email and public profile email are fallbacks
+    // so messages still reach the owner's Gmail when either address is configured in-app.
+    const recipient = process.env.CONTACT_EMAIL_TO?.trim() || admin.email?.trim() || publicEmail;
     const emailNotificationsEnabled = emailConfiguration.configured && recipient.length > 0;
     try {
       if (emailNotificationsEnabled) {

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import {
-  ArrowUpRight,
   BookOpen,
   BriefcaseBusiness,
   ChevronDown,
@@ -208,7 +207,6 @@ function AdminSidebar({ activeSection, unreadCount, onNavigate, onLogout }: { ac
         <SidebarGroup group={settingsGroup} activeSection={activeSection} onNavigate={onNavigate} />
       </nav>
       <div className="admin-sidebar-footer">
-        <a className="admin-sidebar-link" href="/" target="_blank" rel="noreferrer"><ArrowUpRight size={16} /><span>View website</span></a>
         <button className="admin-sidebar-link admin-logout-link" type="button" onClick={onLogout}><LogOut size={16} /><span>Logout</span></button>
       </div>
     </aside>
@@ -272,21 +270,19 @@ export function AdminDashboard({
       {sidebarOpen && <button className="admin-sidebar-backdrop" type="button" aria-label="Close navigation" onClick={() => setSidebarOpen(false)} />}
       <AdminSidebar activeSection={activeSection} unreadCount={inboxSummary.unreadCount} onNavigate={navigate} onLogout={onLogout} />
       <main className="admin-main">
-        <header className="admin-content-topbar">
-          <button className="admin-mobile-menu" type="button" aria-label={sidebarOpen ? "Close navigation" : "Open navigation"} aria-expanded={sidebarOpen} onClick={() => setSidebarOpen((value) => !value)}>
-            {sidebarOpen ? <X size={19} /> : <Menu size={19} />}
-          </button>
-          <div className="admin-breadcrumb"><span>ADMIN</span><ChevronRight size={13} /><strong>{sectionLabels[activeSection]}</strong></div>
-          <a className="admin-topbar-site-link" href="/" target="_blank" rel="noreferrer"><ArrowUpRight size={14} /> View site</a>
-        </header>
-        <SectionPanel
-          section={activeSection}
-          content={content}
-          inboxSummary={inboxSummary}
-          onNavigate={navigate}
-          onContentChange={onContentChange}
-          onInboxSummaryChange={onInboxSummaryChange}
-        />
+        <button className="admin-mobile-menu" type="button" aria-label={sidebarOpen ? "Close navigation" : "Open navigation"} aria-expanded={sidebarOpen} onClick={() => setSidebarOpen((value) => !value)}>
+          {sidebarOpen ? <X size={19} /> : <Menu size={19} />}
+        </button>
+        <div className="admin-page-view" key={activeSection}>
+          <SectionPanel
+            section={activeSection}
+            content={content}
+            inboxSummary={inboxSummary}
+            onNavigate={navigate}
+            onContentChange={onContentChange}
+            onInboxSummaryChange={onInboxSummaryChange}
+          />
+        </div>
         {isEditable && (
           <div className="content-editor-footer admin-save-footer">
             <div className="content-save-status" aria-live="polite">

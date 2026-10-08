@@ -92,7 +92,7 @@ async function main() {
   // own section rather than only as tags inside the education card.
   const skillNames = ["Java", "Data Structures & Algorithms", "SQL", "React", "Next.js"];
   const skillGroups = [{ title: "Backend", skills: skillNames.map((name) => ({ name, level: 80 })) }];
-  const withSkills: PortfolioContent = { ...populated, education: { ...emptyPortfolio.education, skillGroups } };
+  const withSkills: PortfolioContent = { ...populated, education: [{ ...populated.education[0], skillGroups }] };
   const skillsHtml = renderToStaticMarkup(<Skills content={withSkills} />);
   assertNoInlineStyle(skillsHtml, "Skills");
   assert.equal(skillsHtml.includes('id="skills"'), true, "the section must expose id=skills for the nav anchor");
@@ -110,14 +110,14 @@ async function main() {
   record("PASS navigation includes the skills section");
 
   // An empty skill list must degrade gracefully rather than render an empty grid.
-  const emptySkillsHtml = renderToStaticMarkup(<Skills content={{ ...populated, education: { ...emptyPortfolio.education, skillGroups: [] } }} />);
+  const emptySkillsHtml = renderToStaticMarkup(<Skills content={{ ...populated, education: [{ ...populated.education[0], skillGroups: [] }] }} />);
   assertNoInlineStyle(emptySkillsHtml, "Skills (empty)");
   assert.equal(emptySkillsHtml.includes("empty-state"), true, "an empty skill list must show the empty state");
   record("PASS Skills shows an empty state when no skills are configured");
 
   // Proficiency indicators use fixed classes, never inline widths, because the production
   // policy sets style-src-attr 'none'. Values outside the normal range still render safely.
-  const steppedHtml = renderToStaticMarkup(<Skills content={{ ...populated, education: { ...emptyPortfolio.education, skillGroups: [{ title: "Frontend", skills: [{ name: "React", level: 87 }, { name: "CSS", level: -20 }, { name: "Go", level: 1000 }] }] } }} />);
+  const steppedHtml = renderToStaticMarkup(<Skills content={{ ...populated, education: [{ ...populated.education[0], skillGroups: [{ title: "Frontend", skills: [{ name: "React", level: 87 }, { name: "CSS", level: -20 }, { name: "Go", level: 1000 }] }] }] }} />);
   const activeDots = steppedHtml.match(/skill-dot active/g) ?? [];
   assert.equal(activeDots.length, 7, "levels must map to the fixed 3/1/3 active-dot indicators");
   assert.equal(steppedHtml.includes("style="), false, "proficiency indicators must not use inline styles");
@@ -126,11 +126,11 @@ async function main() {
   // The stored record predates the grouped shape. It must migrate to the owner's own skills
   // rather than failing validation and silently falling back to the seed content.
   const legacy = normalizePortfolioContent(
-    { ...populated, education: { degree: "BCA", institution: "CSM", period: "2025", summary: "s", beyond: "b", skills: ["Java", "React"] } },
+    { ...populated, education: [{ degree: "BCA", institution: "CSM", period: "2025", summary: "s", beyond: "b", skills: ["Java", "React"] }] },
     populated
   );
   assert.notEqual(legacy, null, "a record written before the grouped skills must still normalize");
-  const legacyGroups = (legacy as PortfolioContent).education.skillGroups;
+  const legacyGroups = (legacy as PortfolioContent).education[0].skillGroups;
   assert.equal(legacyGroups.length, 1, "legacy skills collapse into one group");
   assert.deepEqual(legacyGroups[0].skills.map((skill) => skill.name), ["Java", "React"], "legacy skill names must be preserved");
   record("PASS a record stored with the old flat skills list migrates instead of falling back to defaults");

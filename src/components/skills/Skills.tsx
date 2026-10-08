@@ -12,7 +12,7 @@ type SkillCategory = {
   number: string;
   title: string;
   icon: ReactNode;
-  skills: PortfolioContent["education"]["skillGroups"][number]["skills"];
+  skills: PortfolioContent["education"][number]["skillGroups"][number]["skills"];
 };
 
 const categoryIcons = [
@@ -98,7 +98,7 @@ export function Skills({
   content: PortfolioContent;
 }) {
   const skillCategories: SkillCategory[] =
-    content.education.skillGroups.map((group, index) => ({
+    (content.education[0]?.skillGroups ?? []).map((group, index) => ({
       number: String(index + 1).padStart(2, "0"),
       title: group.title,
       icon: categoryIcons[index] ?? <Database size={19} strokeWidth={1.8} />,

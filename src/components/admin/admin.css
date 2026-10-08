@@ -274,6 +274,14 @@
     font-weight: 500;
 }
 
+.content-field-label {
+    display: block;
+    color: #c8d2da;
+    font: 600 9px var(--mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
 .content-field-wide {
     grid-column: 1 / -1;
 }

@@ -34,7 +34,7 @@ export function PasswordSection() {
       setConfirmation("");
       if (result.reauthenticate) {
         setMessage("Access code updated and every session was signed out. Returning you to the sign-in screen…");
-        window.setTimeout(() => window.location.assign("/update-section"), 1500);
+        window.setTimeout(() => window.location.assign("/badmash-studio"), 1500);
         return;
       }
       setMessage("Access code updated. Other sessions were signed out.");

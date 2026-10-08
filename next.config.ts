@@ -8,6 +8,7 @@ const noStoreHeaders = [
 
 const nextConfig: NextConfig = {
   agentRules: false,
+  poweredByHeader: false,
 
   allowedDevOrigins: [
     "*.trycloudflare.com",
@@ -21,7 +22,7 @@ const nextConfig: NextConfig = {
       },
       {
         // The dashboard must never be indexed or cached.
-        source: "/update-section/:path*",
+        source: "/badmash-studio/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
           ...noStoreHeaders
@@ -32,6 +33,15 @@ const nextConfig: NextConfig = {
         source: "/api/:path*",
         headers: noStoreHeaders
       }
+    ];
+  },
+
+  async redirects() {
+    return [
+      { source: "/admin", destination: "/", permanent: false },
+      { source: "/admin/", destination: "/", permanent: false },
+      { source: "/admin-dashboard", destination: "/", permanent: false },
+      { source: "/admin-dashboard/", destination: "/", permanent: false }
     ];
   }
 };

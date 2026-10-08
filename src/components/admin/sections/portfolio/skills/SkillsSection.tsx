@@ -21,7 +21,7 @@ type SkillCategory = {
   icon: ReactNode;
 };
 type SkillGroup =
-  PortfolioContent["education"]["skillGroups"][number];
+  PortfolioContent["education"][number]["skillGroups"][number];
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
@@ -140,7 +140,8 @@ export function SkillsSection({
   content: PortfolioContent;
   onChange: (content: PortfolioContent) => void;
 }) {
-  const existingGroups = content.education.skillGroups;
+  const education = content.education[0] ?? { degree: "", institution: "", period: "", summary: "", skillGroups: [], beyond: "" };
+  const existingGroups = education.skillGroups;
 
   /*
    * Always expose exactly four categories in the Admin dashboard.
@@ -155,10 +156,9 @@ export function SkillsSection({
   const updateGroups = (next: SkillGroup[]) => {
     onChange({
       ...content,
-      education: {
-        ...content.education,
-        skillGroups: next,
-      },
+      education: content.education.length > 0
+        ? [{ ...education, skillGroups: next }, ...content.education.slice(1)]
+        : [{ ...education, skillGroups: next }],
     });
   };
 
@@ -219,7 +219,7 @@ export function SkillsSection({
         skills: [
           ...group.skills,
           {
-            name: "",
+            name: "New skill",
             level: 75,
           },
         ],

@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 export function Contact({ content }: { content: PortfolioContent }) {
-  const mailLink = content.contact.email && content.contact.email !== "vishwajityati08@gmail.com" ? `mailto:${content.contact.email}` : "#contact";
+  const mailLink = content.contact.email ? `mailto:${content.contact.email}` : "#contact";
   return (
     <section className="contact section-shell section-block" id="contact">
       <div className="section-kicker reveal"><span></span><span>GET IN TOUCH</span><i /></div>

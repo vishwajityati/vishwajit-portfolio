@@ -48,7 +48,7 @@ function buildPolicy(nonce: string, development: boolean): string {
     `style-src-attr${development ? " 'unsafe-inline'" : " 'none'"}`,
     "font-src 'self' https://fonts.gstatic.com data:",
     // Portfolio imagery is admin-supplied and may be hosted anywhere.
-    "img-src 'self' data: blob: https: http:",
+    "img-src 'self' data: blob: https:",
     "connect-src 'self' https://vercel.com https://*.blob.vercel-storage.com",
     "manifest-src 'self'",
     ...(development ? [] : ["upgrade-insecure-requests"])

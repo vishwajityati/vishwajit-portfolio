@@ -845,6 +845,10 @@
     margin-bottom: 31px;
   }
 
+  .admin-topbar-status {
+    display: none;
+  }
+
   .admin-mobile-menu {
     display: grid;
   }
@@ -859,6 +863,15 @@
 
   .admin-shortcut-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-main-grid,
+  .analytics-bottom-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -883,6 +896,15 @@
   }
 
   .admin-shortcut-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analytics-heading-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .analytics-action-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 

@@ -38,7 +38,7 @@ export interface PortfolioContent {
   about: string[];
   photoUrl: string;
   resumeUrl: string;
-  education: Education;
+  education: Education[];
   skills: Skills;   
   projects: Project[];
   experience: Experience[];
@@ -56,14 +56,7 @@ export const emptyPortfolio: PortfolioContent = {
   photoUrl: "",
   resumeUrl: "",
 
-  education: {
-    degree: "",
-    institution: "",
-    period: "",
-    summary: "",
-    skillGroups: [],
-    beyond: "",
-  },
+  education: [],
 
   skills: {
     frontend: [],

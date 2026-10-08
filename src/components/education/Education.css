@@ -479,3 +479,8 @@
         transition: none !important;
     }
 }
+
+.education-list {
+    display: grid;
+    gap: 18px;
+}

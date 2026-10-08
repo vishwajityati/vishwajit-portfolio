@@ -1,4 +1,4 @@
-import { emptyPortfolio, type Experience, type PortfolioContent, type Project, type SkillGroup } from "@/types";
+import { emptyPortfolio, type Education, type Experience, type PortfolioContent, type Project, type SkillGroup } from "@/types";
 
 /** Proficiency steps are rendered from `.skill-bar-*` classes, so the value is snapped to 5s. */
 export const SKILL_LEVEL_STEP = 5;
@@ -30,6 +30,7 @@ export const PORTFOLIO_LIMITS = {
   aboutParagraphs: 30,
   projects: 80,
   technologies: 40,
+  education: 40,
   experience: 40,
   points: 40,
   skillGroups: 20,
@@ -137,17 +138,9 @@ export function isPortfolioContent(value: unknown): value is PortfolioContent {
     || value.experience.length > PORTFOLIO_LIMITS.experience
     || !value.experience.every(isExperience)) return false;
 
-  if (!hasStringFields(value.education, {
-    degree: PORTFOLIO_LIMITS.shortText,
-    institution: PORTFOLIO_LIMITS.longText,
-    period: PORTFOLIO_LIMITS.shortText,
-    summary: PORTFOLIO_LIMITS.longText,
-    beyond: PORTFOLIO_LIMITS.longText
-  })) return false;
-  if (!Array.isArray(value.education.skillGroups)
-    || value.education.skillGroups.length > PORTFOLIO_LIMITS.skillGroups
-    || !value.education.skillGroups.every(isSkillGroup)) return false;
-
+  if (!Array.isArray(value.education)
+    || value.education.length > PORTFOLIO_LIMITS.education
+    || !value.education.every(isEducation)) return false;
   if (!hasStringFields(value.contact, {
     email: PORTFOLIO_LIMITS.email,
     linkedin: PORTFOLIO_LIMITS.url,
@@ -187,22 +180,23 @@ export function isPortfolioContent(value: unknown): value is PortfolioContent {
  * Levels are snapped to the render step so a migrated value always maps to a real CSS class.
  */
 function migrateEducation(education: unknown, fallback: PortfolioContent["education"]): unknown {
-  if (!isRecord(education)) return education;
+  const records = Array.isArray(education) ? education : isRecord(education) ? [education] : education;
+  if (!Array.isArray(records)) return records;
 
-  const legacySkills = education.skills;
-  const hasLegacyList = Array.isArray(legacySkills) && legacySkills.length > 0;
-  const alreadyMigrated = Array.isArray(education.skillGroups);
+  return records.map((record) => {
+    if (!isRecord(record)) return record;
+    const legacySkills = record.skills;
+    const migrated = Array.isArray(legacySkills) && legacySkills.length > 0 && !Array.isArray(record.skillGroups)
+      ? [{
+          title: "Skills",
+          skills: legacySkills
+            .filter((skill): skill is string => typeof skill === "string" && skill.trim().length > 0)
+            .map((name) => ({ name, level: snapSkillLevel(75) }))
+        }]
+      : record.skillGroups;
 
-  const migrated = hasLegacyList && !alreadyMigrated
-    ? [{
-        title: "Skills",
-        skills: legacySkills
-          .filter((skill): skill is string => typeof skill === "string" && skill.trim().length > 0)
-          .map((name) => ({ name, level: snapSkillLevel(75) }))
-      }]
-    : education.skillGroups;
-
-  return { ...fallback, ...education, skillGroups: migrated };
+    return { ...fallback[0], ...record, skillGroups: migrated };
+  });
 }
 
 export function normalizePortfolioContent(value: unknown, fallback: PortfolioContent = emptyPortfolio): PortfolioContent | null {
@@ -216,4 +210,16 @@ export function normalizePortfolioContent(value: unknown, fallback: PortfolioCon
     siteSettings: isRecord(value.siteSettings) ? { ...fallback.siteSettings, ...value.siteSettings } : value.siteSettings
   };
   return isPortfolioContent(normalized) ? normalized : null;
+}
+
+function isEducation(value: unknown): value is Education {
+  return hasStringFields(value, {
+    degree: PORTFOLIO_LIMITS.shortText,
+    institution: PORTFOLIO_LIMITS.longText,
+    period: PORTFOLIO_LIMITS.shortText,
+    summary: PORTFOLIO_LIMITS.longText,
+    beyond: PORTFOLIO_LIMITS.longText
+  }) && Array.isArray(value.skillGroups)
+    && value.skillGroups.length <= PORTFOLIO_LIMITS.skillGroups
+    && value.skillGroups.every(isSkillGroup);
 }
