@@ -2,7 +2,6 @@
 
 import { useState, type MouseEvent } from "react";
 import {
-  ArrowUpRight,
   BriefcaseBusiness,
   FolderKanban,
   GraduationCap,
@@ -91,19 +90,6 @@ export function BottomNav({ active }: { active: string }) {
           );
         })}
 
-        <a
-          className="nav-resume"
-          href="/resume"
-          aria-label="View résumé"
-        >
-          <span>Résumé</span>
-
-          <ArrowUpRight
-            size={16}
-            strokeWidth={2}
-            aria-hidden="true"
-          />
-        </a>
       </div>
 
 
