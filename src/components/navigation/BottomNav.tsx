@@ -69,7 +69,7 @@ export function BottomNav({ active }: { active: string }) {
               className={`nav-link ${
                 active === id ? "active" : ""
               }`}
-              href={`#${id}`}
+              href="/"
               onClick={navigateToSection(id)}
               aria-label={label}
               aria-current={
@@ -119,7 +119,7 @@ export function BottomNav({ active }: { active: string }) {
           className={`mobile-nav-button ${
             active === "home" ? "active" : ""
           }`}
-          href="#home"
+          href="/"
           onClick={navigateToSection("home")}
           aria-label="Home"
           aria-current={
@@ -163,7 +163,7 @@ export function BottomNav({ active }: { active: string }) {
           className={`mobile-nav-button ${
             active === "contact" ? "active" : ""
           }`}
-          href="#contact"
+          href="/"
           onClick={navigateToSection("contact")}
           aria-label="Contact"
           aria-current={
@@ -198,7 +198,7 @@ export function BottomNav({ active }: { active: string }) {
             return (
               <a
                 key={id}
-                href={`#${id}`}
+                href="/"
                 className={
                   active === id ? "active" : ""
                 }

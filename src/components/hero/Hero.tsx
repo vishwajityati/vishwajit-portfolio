@@ -47,7 +47,7 @@ useEffect(() => {
           <div className="hero-actions">
             <a
               className="button button-primary"
-              href="#contact"
+              href="/"
               onClick={(event) => {
                 event.preventDefault();
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
