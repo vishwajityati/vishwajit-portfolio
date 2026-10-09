@@ -813,9 +813,11 @@
     top: 0;
     bottom: 0;
     left: 0;
-    width: min(290px, calc(100vw - 50px));
+    z-index: 20;
+    width: min(280px, calc(100vw - 24px));
     height: 100dvh;
     min-height: 0;
+    overflow-y: auto;
     transform: translateX(-105%);
     transition: transform .22s ease;
     box-shadow: 18px 0 45px rgba(0, 0, 0, .24);
@@ -828,7 +830,7 @@
   .admin-sidebar-backdrop {
     position: fixed;
     inset: 0;
-    z-index: 4;
+    z-index: 15;
     display: block;
     border: 0;
     background: rgba(0, 0, 0, .58);
@@ -837,7 +839,8 @@
   .admin-dashboard-layout .admin-main {
     width: 100%;
     margin: 0;
-    padding: 0 24px 32px;
+    max-width: none;
+    padding: 0 16px 32px;
   }
 
   .admin-content-topbar {
@@ -850,6 +853,12 @@
   }
 
   .admin-mobile-menu {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 40px;
+    min-height: 40px;
+    margin-bottom: 20px;
     display: grid;
   }
 
@@ -877,8 +886,12 @@
 
 @media (max-width: 480px) {
   .admin-dashboard-layout .admin-main {
-    padding-right: 16px;
-    padding-left: 16px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .admin-sidebar {
+    width: min(260px, calc(100vw - 20px));
   }
 
   .admin-section-heading {
@@ -926,5 +939,361 @@
   .admin-save-footer .content-editor-actions .button {
     width: 100%;
     min-height: 42px;
+  }
+}
+
+/* =========================================================
+   ADMIN DASHBOARD RESPONSIVE SYSTEM
+   Keep the desktop workspace intact, then progressively reduce
+   columns before switching to the mobile drawer layout.
+   ========================================================= */
+
+.admin-dashboard-layout,
+.admin-dashboard-layout .admin-main,
+.admin-dashboard-layout .admin-page-view,
+.admin-dashboard-layout .editor-panel,
+.admin-dashboard-layout .content-section-body,
+.admin-dashboard-layout .admin-overview,
+.admin-dashboard-layout .inbox-panel {
+  min-width: 0;
+}
+
+.admin-dashboard-layout img,
+.admin-dashboard-layout svg,
+.admin-dashboard-layout canvas {
+  max-width: 100%;
+}
+
+.admin-dashboard-layout input,
+.admin-dashboard-layout textarea,
+.admin-dashboard-layout select,
+.admin-dashboard-layout button {
+  max-width: 100%;
+}
+
+.admin-dashboard-layout .analytics-panel,
+.admin-dashboard-layout .analytics-kpi,
+.admin-dashboard-layout .content-entry-card,
+.admin-dashboard-layout .admin-settings-section,
+.admin-dashboard-layout .skills-admin-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .admin-dashboard-layout {
+    grid-template-columns: 184px minmax(0, 1fr);
+  }
+
+  .admin-dashboard-layout .admin-sidebar {
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .admin-dashboard-layout .admin-main {
+    width: 100%;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .admin-sidebar-link,
+  .admin-sidebar-group-toggle {
+    gap: 8px;
+    padding-right: 7px;
+    padding-left: 7px;
+    font-size: 9px;
+  }
+
+  .admin-sidebar-subnav {
+    margin-left: 8px;
+    padding-left: 6px;
+  }
+
+  .analytics-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-main-grid,
+  .analytics-bottom-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(220px, .8fr);
+  }
+
+  .analytics-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-section-nav {
+    overflow-x: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .analytics-main-grid,
+  .analytics-bottom-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analytics-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-dashboard-layout {
+    display: block;
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  .admin-dashboard-layout .admin-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    width: min(280px, calc(100vw - 24px));
+    height: 100dvh;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform .24s ease;
+  }
+
+  .admin-dashboard-layout.sidebar-is-open .admin-sidebar {
+    transform: translateX(0);
+  }
+
+  .admin-dashboard-layout .admin-sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    display: block;
+    width: 100%;
+    border: 0;
+    background: rgba(0, 0, 0, .62);
+  }
+
+  .admin-dashboard-layout .admin-main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 16px max(30px, env(safe-area-inset-bottom));
+  }
+
+  .admin-dashboard-layout .admin-page-view {
+    width: 100%;
+  }
+
+  .admin-dashboard-layout .admin-mobile-menu {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: grid;
+    width: 42px;
+    min-height: 42px;
+    margin: 0 0 20px;
+    border-color: rgba(56, 178, 216, .28);
+    background: rgba(3, 13, 22, .92);
+    backdrop-filter: blur(14px);
+  }
+
+  .analytics-kpi-grid,
+  .analytics-main-grid,
+  .analytics-bottom-grid,
+  .admin-shortcut-grid,
+  .skills-admin-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analytics-panel,
+  .inbox-panel,
+  .editor-panel,
+  .admin-settings-section {
+    width: 100%;
+  }
+
+  .analytics-chart {
+    grid-template-columns: 22px minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .analytics-chart-area,
+  .analytics-trend {
+    min-width: 0;
+  }
+
+  .analytics-chart-x {
+    gap: 5px;
+    font-size: 7px;
+  }
+
+  .content-section-nav {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .content-section-tab {
+    flex: 0 0 auto;
+  }
+
+  .content-fields-grid,
+  .content-entry-card .content-fields-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .content-entry-card,
+  .skills-admin-card,
+  .resume-upload-card,
+  .inbox-panel {
+    padding: 14px;
+  }
+
+  .content-entry-heading,
+  .content-list-heading,
+  .inbox-heading,
+  .inbox-detail-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .content-entry-heading h3,
+  .content-list-heading h3,
+  .inbox-heading h2,
+  .inbox-detail-heading h3 {
+    max-width: 100%;
+  }
+
+  .skills-admin-card-header {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .skills-admin-card-header .content-add-button {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
+
+  .skills-admin-row {
+    grid-template-columns: 20px minmax(0, 1fr) 70px 34px;
+  }
+
+  .inbox-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inbox-list {
+    max-height: 280px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .inbox-message-detail {
+    min-width: 0;
+    padding: 14px;
+  }
+
+  .inbox-detail-actions {
+    flex-shrink: 0;
+  }
+
+  .content-editor-footer {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 9px;
+    margin-right: -14px;
+    margin-left: -14px;
+    padding: 11px 14px max(11px, env(safe-area-inset-bottom));
+  }
+
+  .content-save-status,
+  .content-editor-actions {
+    width: 100%;
+  }
+
+  .content-editor-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  }
+
+  .content-editor-actions .button {
+    width: 100%;
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard-layout .admin-main {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .admin-dashboard-layout .admin-sidebar {
+    width: min(280px, calc(100vw - 16px));
+  }
+
+  .editor-panel,
+  .inbox-panel,
+  .admin-settings-section {
+    border-radius: 6px;
+  }
+
+  .analytics-panel {
+    padding: 12px;
+  }
+
+  .analytics-chart-x span {
+    max-width: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .skills-admin-row {
+    grid-template-columns: minmax(0, 1fr) 68px 34px;
+  }
+
+  .skills-admin-skill-number {
+    display: none;
+  }
+
+  .skills-admin-name {
+    grid-column: 1;
+  }
+
+  .skills-admin-level {
+    grid-column: 2;
+  }
+
+  .skills-admin-delete {
+    grid-column: 3;
+  }
+
+  .inbox-detail-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .inbox-detail-footer .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .admin-dashboard-layout .admin-main {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .content-section-tab {
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 9px;
+  }
+
+  .content-entry-card,
+  .skills-admin-card,
+  .inbox-panel {
+    padding: 11px;
   }
 }

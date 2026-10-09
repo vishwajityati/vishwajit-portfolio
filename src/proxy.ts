@@ -13,6 +13,10 @@ import { buildContentSecurityPolicy } from "@/lib/security-headers";
  * prerendered page would be emitted without the nonce and its scripts would be blocked.
  */
 export function proxy(request: NextRequest) {
+  if (request.nextUrl.pathname === "/Bosdik" || request.nextUrl.pathname === "/Bosdik/") {
+    return NextResponse.redirect(new URL("/bosdik", request.url), 308);
+  }
+
   // btoa is available in both the Edge and Node runtimes; Buffer is not guaranteed here.
   const nonce = btoa(crypto.randomUUID());
   const policy = buildContentSecurityPolicy(nonce);

@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
       },
       {
         // The dashboard must never be indexed or cached.
-        source: "/badmash-studio/:path*",
+        source: "/bosdik/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
           ...noStoreHeaders

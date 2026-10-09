@@ -30,7 +30,7 @@ export function PortfolioApp({ content }: { content: PortfolioContent }) {
         <Contact content={content} />
       </main>
       <BottomNav active={active} />
-      <a className="admin-shortcut" href="/badmash-studio" aria-label="Open admin dashboard" title="Admin dashboard">
+      <a className="admin-shortcut" href="/bosdik" aria-label="Open admin dashboard" title="Admin dashboard">
       <LockKeyhole size={14} /></a>
     </div>
   );

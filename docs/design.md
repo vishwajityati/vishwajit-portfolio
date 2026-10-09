@@ -103,7 +103,7 @@ tuned for A4 have almost nothing in common.
 
 A sidebar-plus-panel layout. The sidebar switches between sections; only the active section is
 mounted. Each section is a focused editor for one part of the content document, sharing
-reusable primitives in `sections/shared/` (`AdminField`, `AdminTextList`, `SectionIntro`) so
+reusable primitives in `sections/shared/` (`BosdikField`, `BosdikTextList`, `SectionIntro`) so
 that input markup, labelling, and error display are consistent everywhere.
 
 ## Motion

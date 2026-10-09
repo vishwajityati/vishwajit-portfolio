@@ -11,7 +11,7 @@ A single Next.js App Router application serves three things from one codebase:
 | --- | --- | --- | --- |
 | Public site | `/` | Dynamic (SSR) | The animated single-page portfolio |
 | Résumé | `/resume` | Dynamic (SSR) | A print-ready résumé view |
-| Admin dashboard | `/badmash-studio` | Dynamic (SSR) | Access-code-protected editing UI |
+| Bosdik dashboard | `/bosdik` | Dynamic (SSR) | Access-code-protected editing UI |
 | API | `/api/*` | Route handlers | Mutations, auth, message inbox |
 
 All content lives in **one row**. `Portfolio` is a single-record table (`id` is pinned to `1`)
@@ -175,8 +175,8 @@ validation can never invalidate content that is already stored.
 **Response headers** (`src/lib/security-headers.ts` + `next.config.ts`)
 
 Static headers are applied to every response; a per-request nonce-based CSP is added by the
-proxy layer. `/badmash-studio/*` and `/api/*` additionally send `no-store`, and
-`/badmash-studio/*` sends `X-Robots-Tag: noindex`. The admin security dashboard reads its own response headers back and
+ proxy layer. `/bosdik/*` and `/api/*` additionally send `no-store`, and
+`/bosdik/*` sends `X-Robots-Tag: noindex`. The Bosdik security dashboard reads its own response headers back and
 reports on them, so header regressions surface in the UI instead of going unnoticed.
 
 **Development relaxes `style-src`.** `npm run dev` runs `next dev --webpack`, whose `style-loader`

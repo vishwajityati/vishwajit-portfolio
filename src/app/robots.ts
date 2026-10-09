@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/resume"],
-        disallow: ["/badmash-studio", "/badmash-studio/", "/admin", "/admin-dashboard", "/api/"]
+        disallow: ["/bosdik", "/bosdik/", "/admin", "/admin-dashboard", "/api/"]
       }
     ],
     sitemap: undefined

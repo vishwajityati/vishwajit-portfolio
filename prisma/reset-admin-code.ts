@@ -133,7 +133,7 @@ async function main() {
   });
 
   if (!admin) {
-    throw new Error("No admin account exists in this database. Complete first-time setup at /badmash-studio.");
+    throw new Error("No admin account exists in this database. Complete first-time setup at /bosdik.");
   }
 
   // The CLI mirrors the web policy exactly, so a code rejected here is also rejected
@@ -180,7 +180,7 @@ async function main() {
   console.log("All previously signed-in sessions were invalidated.");
   console.log(disableAuthenticator
     ? "Authenticator verification was DISABLED — re-enable it under Settings -> Two-Factor Auth once you are back in."
-    : "Authenticator verification is still enabled; sign in with your app code at /badmash-studio.");
+    : "Authenticator verification is still enabled; sign in with your app code at /bosdik.");
 }
 
 main()

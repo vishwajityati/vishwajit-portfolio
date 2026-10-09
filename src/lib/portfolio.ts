@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { defaultContent } from "@/data/personal";
 import type { PortfolioContent } from "@/types";
 import { prisma } from "@/lib/prisma";
@@ -62,7 +63,7 @@ async function ensurePortfolioSeed(): Promise<PortfolioContent> {
   }
 }
 
-export async function getPortfolioContent(): Promise<PortfolioContent> {
+async function readPortfolioContent(): Promise<PortfolioContent> {
   const record = await withDatabaseRetry(
     () => prisma.portfolio.findUnique({ where: { id: 1 } }),
     { label: "portfolio content read" }
@@ -83,6 +84,9 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
     return ensurePortfolioSeed();
   }
 }
+
+// Deduplicates the layout metadata read and page read during one server render.
+export const getPortfolioContent = cache(readPortfolioContent);
 
 export async function savePortfolioContent(content: PortfolioContent): Promise<void> {
   // An upsert is idempotent, so replaying it after a dropped connection cannot duplicate or

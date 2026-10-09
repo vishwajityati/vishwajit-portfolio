@@ -36,7 +36,7 @@ A full-stack portfolio built with Next.js App Router, TypeScript, Prisma, and Ne
    npm run dev
    ```
 
-5. Open `http://localhost:5173`. Go to `/badmash-studio` to create the first administrator account. There are no default credentials; the one-time first account requires a strong access code.
+5. Open `http://localhost:5173`. Go to `/bosdik` to create the first administrator account. There are no default credentials; the one-time first account requires a strong access code.
 
 The legacy SQLite migrations are preserved in `prisma/sqlite-migrations/` for reference; Prisma deploys only the PostgreSQL migrations in `prisma/migrations/`. The old local database at `prisma/dev.db` is not used by the Neon-backed app.
 
@@ -60,11 +60,11 @@ To add authenticator-app two-factor verification, deploy the database migration 
 
 ## Managing portfolio content
 
-Sign in to `/badmash-studio` to use the sidebar dashboard. Portfolio sections, profile/contact details, social links, SEO, and site settings are edited independently and saved to the portfolio record. SEO title/description/keywords and the social preview image are used for generated page metadata. Admin email and access-code updates require the current access code. Projects and experience entries can be added or removed without editing JSON. Project screenshots use each project's `imageUrl`; a profile photo uses `photoUrl`; and an optional résumé file or hosted URL uses `resumeUrl`.
+   Sign in to `/bosdik` to use the sidebar dashboard. Portfolio sections, profile/contact details, social links, SEO, and site settings are edited independently and saved to the portfolio record. SEO title/description/keywords and the social preview image are used for generated page metadata. Admin email and access-code updates require the current access code. Projects and experience entries can be added or removed without editing JSON. Project screenshots use each project's `imageUrl`; a profile photo uses `photoUrl`; and an optional résumé file or hosted URL uses `resumeUrl`.
 
 If `resumeUrl` is empty, `/resume` displays a print-ready résumé based on your saved portfolio content. Choose **Download as PDF** to save it using the browser's print dialog.
 
-Visitor messages from the contact form are saved in the private **Messages** inbox in `/badmash-studio`; mark them read or unread, delete them, or reply by email. To receive automatic email alerts, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and `SMTP_PASSWORD` in the private project-root `.env` file (or your hosting provider's environment settings), then restart/redeploy the app. Set `CONTACT_EMAIL_TO` to the personal Gmail inbox where you want alerts; if it is blank, notifications go to the admin account email and then the public profile email. Optionally set `SMTP_FROM` to the authenticated sender address. For Gmail, use `smtp.gmail.com`, port `587`, your Gmail address for `SMTP_USER`, and a Google App Password for `SMTP_PASSWORD`; do not use your regular account password. Spaces in Gmail App Passwords are removed automatically. Email settings stay on the server and are never exposed by the inbox API. Without working SMTP settings, messages are still saved in the admin inbox, but no email alert is sent.
+Visitor messages from the contact form are saved in the private **Messages** inbox in `/bosdik`; mark them read or unread, delete them, or reply by email. To receive automatic email alerts, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and `SMTP_PASSWORD` in the private project-root `.env` file (or your hosting provider's environment settings), then restart/redeploy the app. Set `CONTACT_EMAIL_TO` to the personal Gmail inbox where you want alerts; if it is blank, notifications go to the admin account email and then the public profile email. Optionally set `SMTP_FROM` to the authenticated sender address. For Gmail, use `smtp.gmail.com`, port `587`, your Gmail address for `SMTP_USER`, and a Google App Password for `SMTP_PASSWORD`; do not use your regular account password. Spaces in Gmail App Passwords are removed automatically. Email settings stay on the server and are never exposed by the inbox API. Without working SMTP settings, messages are still saved in the admin inbox, but no email alert is sent.
 
 Apply the contact-message table migration to your database before using the inbox:
 

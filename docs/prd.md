@@ -22,7 +22,7 @@ A single-developer portfolio that is:
 | --- | --- | --- |
 | Visitor | Skim skills, projects and experience; get in touch | `/` |
 | Recruiter / client | Read a focused, printable summary | `/resume` |
-| Owner | Edit all site content; read contact messages | `/badmash-studio` |
+| Owner | Edit all site content; read contact messages | `/bosdik` |
 
 There is exactly one account type. There are no visitor accounts, no comments, and no
 registration — the app is a publishing surface plus a private editor, not a community product.
