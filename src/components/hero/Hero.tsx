@@ -45,9 +45,17 @@ useEffect(() => {
           )}
 
           <div className="hero-actions">
-          <a className="button button-primary"
-            href="#contact">Let’s talk <ArrowUpRight size={16} />
-          </a>
+            <a
+              className="button button-primary"
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+              }}
+            >
+              Let’s talk <ArrowUpRight size={16} />
+            </a>
           <div className="resume-menu">
             <button
               className="button button-quiet"
