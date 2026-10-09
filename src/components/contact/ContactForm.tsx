@@ -46,7 +46,7 @@ export function ContactForm() {
         <label>Your name<input required name="name" placeholder="Jane Smith" autoComplete="name" /></label>
         <label>Email address<input required type="email" name="email" placeholder="jane@email.com" autoComplete="email" /></label>
       </div>
-      <label>Phone <span className="optional-label">(optional)</span><input type="tel" name="phone" inputMode="numeric" pattern="[0-9]{0,10}" maxLength={10} placeholder="9876543210" autoComplete="tel" /></label>
+      <label>Phone<input required type="tel" name="phone" inputMode="numeric" pattern="[0-9]{10}" maxLength={10} placeholder="9876543210" autoComplete="tel" /></label>
       <label>What can I help with?<textarea required name="message" rows={3} placeholder="Tell me a little about your idea..." /></label>
       {error && <p className="form-notice error-notice" role="alert">{error}</p>}
       {sent && <p className="form-notice" role="status">{notificationStatus}</p>}

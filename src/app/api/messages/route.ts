@@ -72,8 +72,8 @@ export async function POST(request: NextRequest) {
     const message = typeof body.message === "string" ? body.message.trim() : "";
     const website = typeof body.website === "string" ? body.website.trim() : "";
 
-    if (website || name.length < 1 || name.length > 100 || /[\u0000-\u001f\u007f]/.test(name) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || !/^\d{0,10}$/.test(phone) || message.length > MAX_MESSAGE_LENGTH || !message.trim()) {
-      return NextResponse.json({ error: "Enter a valid name and email, use at most 10 digits for your phone, and enter a message." }, { status: 400 });
+    if (website || name.length < 1 || name.length > 100 || /[\u0000-\u001f\u007f]/.test(name) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || !/^\d{10}$/.test(phone) || message.length > MAX_MESSAGE_LENGTH || !message.trim()) {
+      return NextResponse.json({ error: "Enter your name, a valid email, a 10-digit phone number, and a message." }, { status: 400 });
     }
 
     const [admin, portfolio] = await Promise.all([
