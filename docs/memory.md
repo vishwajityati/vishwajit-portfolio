@@ -11,7 +11,7 @@ fails. Stop the dev server before building.
 
 **`server-only` is not in `node_modules`.** Next.js supplies it at build time. Anything run
 under plain `tsx` — the seed script, the admin CLI, the tests — cannot resolve
-`import "server-only"`. `prisma/shim-server-only.cjs` maps it to an empty module for exactly
+`import "server-only"`. `scripts/shims/shim-server-only.cjs` maps it to an empty module for exactly
 this reason.
 
 **Top-level `await` fails under `tsx` here.** The project resolves to CJS output, so test

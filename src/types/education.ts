@@ -5,7 +5,7 @@ export interface Skill {
    *
    * The public bar is drawn from stepped CSS classes rather than an inline `width`, so the value
    * is snapped to the nearest 5 to guarantee a matching class always exists. That keeps
-   * `style-src-attr 'none'` intact — see `.skill-bar-*` in components/skills/Skills.css.
+   * `style-src-attr 'none'` intact — see `.skill-bar-*` in features/portfolio/skills/Skills.css.
    */
   level: number;
 }

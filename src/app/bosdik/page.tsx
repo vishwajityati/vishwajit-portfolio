@@ -1,4 +1,4 @@
-import { BosdikShell } from "@/components/bosdik/BosdikShell/BosdikShell";
+import { BosdikShell } from "@/features/bosdik/BosdikShell/BosdikShell";
 
 export const dynamic = "force-dynamic";
 

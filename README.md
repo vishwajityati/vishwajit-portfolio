@@ -47,10 +47,13 @@ To add authenticator-app two-factor verification, deploy the database migration 
 ## Project structure
 
 - `prisma/` — PostgreSQL schema and migrations, and initial seed data.
+- `scripts/` — admin CLI (`admin/`), test scripts (`tests/`) with their shims (`shims/`), and Windows dev helpers (`windows/`).
 - `public/images/` and `public/resume/` — static images and résumé assets.
 - `src/app/` — Next.js pages, layouts, and API route handlers.
-- `src/components/` — public portfolio sections, résumé views, and the admin dashboard.
-- `src/components/admin/sections/` — dashboard overview, portfolio editors, messages, profile, social links, and settings panels.
+- `src/features/portfolio/` — the public site: `PortfolioApp` plus one folder per section (hero, about, skills, education, projects, experience, contact, résumé, navigation).
+- `src/features/bosdik/` — the admin dashboard served at `/bosdik`: shell, login, message inbox, and `sections/` (overview, portfolio editors, messages, profile, social links, settings).
+- `src/components/` — UI shared across features (animated background).
+
 - `src/data/` — initial portfolio content.
 - `src/hooks/` — active-section and scroll-animation hooks.
 - `src/lib/` — Prisma client, authentication, permissions, validation, and data access.

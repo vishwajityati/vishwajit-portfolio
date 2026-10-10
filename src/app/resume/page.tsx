@@ -1,4 +1,4 @@
-import { ResumeView } from "@/components/resume/ResumeView";
+import { ResumeView } from "@/features/portfolio/resume/ResumeView";
 import { getPortfolioContent } from "@/lib/portfolio";
 
 export const dynamic = "force-dynamic";

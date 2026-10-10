@@ -1,0 +1,317 @@
+/* =========================================================
+   ADMIN PROJECTS SECTION
+   ========================================================= */
+
+.content-entry-list {
+  margin-top: 24px;
+}
+
+/* ---------------------------------------------------------
+   Project Card
+   --------------------------------------------------------- */
+
+.content-entry-list .content-entry-card {
+  position: relative;
+  padding: 20px;
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 21, 30, 0.72),
+      rgba(8, 11, 17, 0.55)
+    );
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.content-entry-list .content-entry-card:hover {
+  border-color: rgba(165, 241, 200, 0.24);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 25, 34, 0.82),
+      rgba(8, 11, 17, 0.62)
+    );
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.16);
+}
+
+/* ---------------------------------------------------------
+   Project Header
+   --------------------------------------------------------- */
+
+.content-entry-list .content-entry-heading {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.content-entry-list .content-entry-index {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--mint);
+  font-size: 1rem;
+  letter-spacing: 0.13em;
+}
+
+.content-entry-list .content-entry-heading h3 {
+  color: var(--text);
+  font-size: 17px;
+  transition: color 0.2s ease;
+}
+
+.content-entry-list .content-entry-card:hover
+.content-entry-heading h3 {
+  color: var(--mint);
+}
+
+/* ---------------------------------------------------------
+   Remove Project Button
+   --------------------------------------------------------- */
+
+.content-entry-list .content-icon-button {
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.content-entry-list .content-icon-button:hover {
+  transform: scale(1.04);
+}
+
+/* ---------------------------------------------------------
+   Project Fields
+   --------------------------------------------------------- */
+
+.content-entry-list .content-fields-grid {
+  margin-top: 18px;
+  gap: 14px;
+}
+
+/*
+ * Description should use the full width of the card.
+ * The BosdikField itself remains unchanged.
+ */
+.content-entry-list
+.content-fields-grid
+> :nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+/* ---------------------------------------------------------
+   Project Checkbox
+   --------------------------------------------------------- */
+
+.content-entry-list .content-checkbox {
+  width: fit-content;
+  margin-top: 3px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.018);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.content-entry-list .content-checkbox:hover {
+  border-color: rgba(165, 241, 200, 0.22);
+  background: rgba(165, 241, 200, 0.025);
+}
+
+.content-entry-list .content-checkbox input {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------------------------------------------------------
+   Add Project Button
+   --------------------------------------------------------- */
+
+.content-entry-list + .button-add-entry {
+  margin-top: 16px;
+}
+
+.button-add-entry {
+  min-height: 48px;
+  gap: 9px;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.button-add-entry:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   Empty State
+   --------------------------------------------------------- */
+
+.content-entry-list:empty::before {
+  content: "No projects added yet.";
+  display: block;
+  padding: 35px 20px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.012);
+  font: 1rem var(--mono);
+  text-align: center;
+}
+
+.project-image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.project-image-upload-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, inherit);
+}
+
+.project-image-preview {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 12px;
+  background: var(--surface-color, #f3f4f6);
+}
+
+.project-image-preview img {
+  display: block;
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.project-image-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  background: rgb(0 0 0 / 70%);
+  cursor: pointer;
+}
+
+.project-image-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 11px 15px;
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, inherit);
+  background: var(--surface-color, transparent);
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.project-image-upload-button:hover {
+  border-color: var(--accent-color, #6366f1);
+}
+
+.project-image-upload-button:has(input:disabled) {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.project-image-help {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+}
+
+.project-image-error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #dc2626;
+}
+
+/* ---------------------------------------------------------
+   Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .content-entry-list .content-entry-card {
+    padding: 17px;
+  }
+
+  .content-entry-list .content-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-entry-list
+  .content-fields-grid
+  > :nth-child(3) {
+    grid-column: auto;
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 520px) {
+  .content-entry-list {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .content-entry-list .content-entry-card {
+    padding: 14px;
+  }
+
+  .content-entry-list .content-entry-heading h3 {
+    font-size: 1rem;
+  }
+
+  .content-entry-list .content-checkbox {
+    width: 100%;
+  }
+
+  .button-add-entry {
+    min-height: 44px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Reduced Motion
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .content-entry-list .content-entry-card,
+  .content-entry-list .content-icon-button,
+  .content-entry-list .content-checkbox,
+  .button-add-entry {
+    transition: none;
+  }
+
+  .content-entry-list .content-entry-card:hover,
+  .content-entry-list .content-icon-button:hover,
+  .button-add-entry:hover {
+    transform: none;
+  }
+}

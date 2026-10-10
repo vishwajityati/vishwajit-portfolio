@@ -8,7 +8,7 @@
  * keyframes.css comes last because @keyframes are resolved at their use site.
  *
  * Component stylesheets are split by folder. Anything a single component owns lives beside it
- * (components/about/About.css); genuinely shared rules stay in styles/. When adding a
+ * (features/portfolio/about/About.css); genuinely shared rules stay in styles/. When adding a
  * stylesheet, match the specificity and ordering intent of what is already here rather than
  * appending blindly.
  */
@@ -16,11 +16,11 @@
 @import "../styles/theme.css";
 @import "../styles/reset.css";
 @import "../styles/buttons.css";
-@import "../components/contact/footer.css";
-@import "../components/navigation/BottomNav.css";
+@import "../features/portfolio/contact/footer.css";
+@import "../features/portfolio/navigation/BottomNav.css";
 @import "../styles/reveal.css";
-@import "../components/bosdik/bosdik.css";
-@import "../components/resume/ResumeView.css";
+@import "../features/bosdik/bosdik.css";
+@import "../features/portfolio/resume/ResumeView.css";
 @import "../styles/keyframes.css";
 @import "../styles/responsive.css";
 /* =========================================================
@@ -40,6 +40,10 @@ body {
     min-width: 0;
     margin: 0;
     overflow-x: hidden;
+}
+
+*{
+    font-family: Space Grotesk , sans-serif;
 }
 
 *,

@@ -1,0 +1,338 @@
+
+/* =========================================
+   CINEMATIC PORTFOLIO BACKGROUND
+   ========================================= */
+
+.portfolio-backdrop {
+  --mx: 50%;
+  --my: 40%;
+
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 15% 45%,
+      rgba(0, 100, 94, 0.12),
+      transparent 43%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(13, 36, 74, 0.18),
+      transparent 42%
+    ),
+    #020609;
+}
+
+/* =========================================
+   ATMOSPHERIC LIGHTING
+   ========================================= */
+
+.ambient {
+  position: absolute;
+  width: clamp(320px, 58vw, 850px);
+  height: clamp(320px, 58vw, 850px);
+  border-radius: 50%;
+  filter: blur(clamp(65px, 9vw, 125px));
+  will-change: transform;
+}
+
+.ambient-teal {
+  top: -48%;
+  left: -23%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 195, 175, 0.19) 0%,
+    rgba(0, 125, 130, 0.08) 34%,
+    transparent 70%
+  );
+  animation: ambient-float 25s ease-in-out infinite alternate;
+}
+
+.ambient-purple {
+  top: -27%;
+  right: -26%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(108, 26, 145, 0.15),
+    rgba(53, 23, 95, 0.06) 40%,
+    transparent 72%
+  );
+  animation: ambient-float 32s ease-in-out infinite alternate-reverse;
+}
+
+.ambient-blue {
+  width: clamp(280px, 44vw, 650px);
+  height: clamp(200px, 28vw, 420px);
+  right: -12%;
+  bottom: -22%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 200, 195, 0.22),
+    rgba(0, 110, 150, 0.07) 42%,
+    transparent 72%
+  );
+  animation: ambient-float 23s ease-in-out infinite alternate;
+}
+
+/* =========================================
+   CURVED NEBULA LIGHT STREAKS
+   ========================================= */
+
+.light-streak {
+  position: absolute;
+  width: clamp(250px, 37vw, 570px);
+  height: clamp(110px, 17vw, 230px);
+  border-top: 2px solid rgba(0, 230, 220, 0.09);
+  border-radius: 50%;
+  filter: blur(2px);
+  transform: rotate(-48deg);
+  opacity: 0.8;
+}
+
+.light-streak-top {
+  top: -9%;
+  left: 8%;
+  width: clamp(270px, 42vw, 620px);
+  height: clamp(120px, 20vw, 270px);
+  border-top-color: rgba(0, 226, 214, 0.12);
+  box-shadow:
+    0 -8px 32px rgba(0, 215, 205, 0.035),
+    0 -22px 65px rgba(0, 165, 160, 0.035);
+}
+
+.light-streak-bottom {
+  right: -9%;
+  bottom: 8%;
+  width: clamp(220px, 28vw, 410px);
+  height: clamp(90px, 12vw, 160px);
+  border-top-color: rgba(0, 235, 225, 0.13);
+  filter: blur(8px);
+  transform: rotate(-20deg);
+  box-shadow: 0 -10px 35px rgba(0, 225, 220, 0.07);
+}
+
+/* =========================================
+   SUBTLE MOUSE-RESPONSIVE LIGHT
+   ========================================= */
+
+.mouse-light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx) var(--my),
+    rgba(0, 215, 205, 0.055),
+    transparent 29%
+  );
+}
+/* =========================================
+   STARS / PARTICLES
+   ========================================= */
+
+.space-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.space-particle {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  animation: particle-pulse 4.5s ease-in-out infinite alternate;
+}
+
+.particle-0 {
+  background: #00ead0;
+  box-shadow: 0 0 6px rgba(0, 234, 208, 0.68);
+}
+
+.particle-1 {
+  background: #bd72ff;
+  box-shadow: 0 0 6px rgba(177, 90, 255, 0.55);
+}
+
+.particle-2 {
+  background: #b9eaff;
+  box-shadow: 0 0 5px rgba(168, 233, 255, 0.5);
+}
+
+/* =========================================
+   CINEMATIC EDGE SHADING
+   ========================================= */
+
+.backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    transparent 34%,
+    rgba(0, 0, 0, 0.12) 73%,
+    rgba(0, 0, 0, 0.4) 115%
+  );
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes ambient-float {
+  from {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(2%, 1.5%, 0) scale(1.06);
+  }
+}
+
+@keyframes planet-hover {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+@keyframes particle-pulse {
+  from {
+    opacity: 0.25;
+    scale: 0.8;
+  }
+
+  to {
+    opacity: 0.85;
+    scale: 1.2;
+  }
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .glass-planet {
+    left: 7%;
+    width: clamp(125px, 16vw, 165px);
+  }
+
+  .ambient {
+    filter: blur(85px);
+  }
+
+  .light-streak {
+    opacity: 0.7;
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .ambient-teal {
+    top: -23%;
+    left: -43%;
+  }
+
+  .ambient-purple {
+    top: -10%;
+    right: -48%;
+  }
+
+  .ambient-blue {
+    right: -32%;
+    bottom: -14%;
+  }
+
+  .glass-planet {
+    left: 1%;
+    top: 35%;
+    width: clamp(100px, 21vw, 145px);
+  }
+
+  .light-streak-top {
+    top: -4%;
+    left: -12%;
+    opacity: 0.7;
+  }
+
+  .light-streak-bottom {
+    right: -24%;
+    bottom: 12%;
+    opacity: 0.65;
+  }
+
+  .mouse-light {
+    display: none;
+  }
+
+  .space-particle {
+    width: 2px;
+    height: 2px;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 480px) {
+  .ambient {
+    filter: blur(65px);
+  }
+
+  .glass-planet {
+    left: -18px;
+    top: 34%;
+    width: 105px;
+    opacity: 0.85;
+  }
+
+  .light-streak-top {
+    width: 270px;
+    height: 115px;
+  }
+
+  .light-streak-bottom {
+    width: 220px;
+    height: 85px;
+    right: -30%;
+  }
+
+  .backdrop-vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 28%,
+      rgba(0, 0, 0, 0.36) 100%
+    );
+  }
+}
+
+/* Landscape phones */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .glass-planet {
+    top: 48%;
+    left: 5%;
+    width: 100px;
+  }
+
+  .ambient {
+    filter: blur(55px);
+  }
+}
+
+/* Accessibility: reduce motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient,
+  .glass-planet,
+  .space-particle {
+    animation: none !important;
+  }
+}

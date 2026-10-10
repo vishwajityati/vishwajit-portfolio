@@ -1,0 +1,19 @@
+PASS classified transient: P1001 can't reach server
+PASS classified transient: P1002 connect timeout
+PASS classified transient: P1017 server closed connection
+PASS classified transient: P2024 pool timeout
+PASS classified transient: P2034 deadlock
+PASS classified transient: initialization: unreachable
+PASS classified transient: socket ECONNRESET
+PASS classified transient: socket ETIMEDOUT
+PASS classified permanent: P2002 unique violation
+PASS classified permanent: P2025 record not found
+PASS classified permanent: P2003 FK violation
+PASS classified permanent: missing DATABASE_URL
+PASS classified permanent: invalid connection string
+PASS classified permanent: plain error
+PASS classified permanent: not an error
+PASS retries a transient failure and returns the eventual value
+PASS gives up after the configured number of attempts
+PASS never retries a permanent error
+PASS passes a healthy operation straight through

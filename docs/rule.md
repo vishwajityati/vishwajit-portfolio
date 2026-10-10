@@ -5,7 +5,7 @@ when a rule here and the surrounding code disagree, the code wins and this docum
 
 ## Layering
 
-**`components/` never imports Prisma. `lib/` never imports React.** Components receive content
+**`components/` and `features/` never import Prisma. `lib/` never imports React.** Components receive content
 as props; all data access is funnelled through `src/lib`. This keeps security-relevant logic
 reviewable in one directory.
 
@@ -26,7 +26,7 @@ import "server-only";
 This is a compile-time guard, not documentation. It is omitted **only** where a client
 component genuinely needs the module — `access-code.ts` is the deliberate exception, and its
 header comment says so. Because `server-only` is supplied by Next.js and is not in
-`node_modules`, scripts run under plain `tsx` need the shim in `prisma/shim-server-only.cjs`.
+`node_modules`, scripts run under plain `tsx` need the shim in `scripts/shims/shim-server-only.cjs`.
 
 ## Client components
 
@@ -89,7 +89,7 @@ reading a `code` property off an unknown error.
   component stylesheet.
 - **Motion is CSS transitions**, not a JavaScript animation library.
 - **Responsive rules go in `src/styles/responsive.css`**; component-specific CSS lives beside
-  its component in its own folder (`components/about/About.css`).
+  its component in its own folder (`features/portfolio/about/About.css`).
 - **`src/app/globals.css` is the only place CSS is imported,** and its order is load-bearing —
   `responsive.css` must stay last so its media queries override the base rules. Adding a
   stylesheet means adding an `@import` there in the correct position, not appending blindly.

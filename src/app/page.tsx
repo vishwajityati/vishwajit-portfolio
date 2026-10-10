@@ -1,4 +1,4 @@
-import { PortfolioApp } from "@/components/PortfolioApp";
+import { PortfolioApp } from "@/features/portfolio/PortfolioApp";
 import { getPortfolioContent } from "@/lib/portfolio";
 
 export const dynamic = "force-dynamic";

@@ -123,7 +123,7 @@
   }
 
   .brand-name {
-    font-size: 12px;
+    font-size: 1rem;
   }
 
   .header-status {
@@ -136,7 +136,7 @@
 
   .hero-intro {
     max-width: 420px;
-    font-size: 15px;
+    font-size: 1rem;
   }
 
   .bottom-nav {
@@ -150,7 +150,7 @@
     flex: 1;
     gap: 5px;
     padding: 10px 6px;
-    font-size: 9px;
+    font-size: 1rem;
   }
 }
 
@@ -189,7 +189,7 @@
 
   .hero-bottom {
     bottom: 22px;
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .hero-bottom-center {
@@ -261,7 +261,7 @@
     min-width: 69px;
     gap: 5px;
     padding: 9px 7px;
-    font-size: 9px;
+    font-size: 1rem;
   }
 
   .nav-index {
@@ -275,7 +275,7 @@
 
 @media (max-width: 640px) {
   .header-status {
-    font-size: 0;
+    font-size: 1rem;
     gap: 0;
   }
 
@@ -285,7 +285,7 @@
   }
 
   .header-year {
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .hero h1 {
@@ -294,7 +294,7 @@
 
   .hero-intro {
     max-width: 360px;
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .section-block {
@@ -328,13 +328,13 @@
     min-width: 0;
     flex: 1;
     padding: 10px 3px;
-    font-size: 8px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .header-status {
-    font-size: 0;
+    font-size: 1rem;
     gap: 0;
   }
 
@@ -344,7 +344,7 @@
   }
 
   .header-year {
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .hero h1 {
@@ -353,7 +353,7 @@
 
   .hero-intro {
     max-width: 310px;
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .hero-orbit-mark {
@@ -426,7 +426,7 @@
   }
 
   .experience-meta {
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .bottom-nav {
@@ -440,11 +440,11 @@
     min-width: 0;
     flex: 1;
     padding: 10px 3px;
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .site-footer {
-    font-size: 7px;
+    font-size: 1rem;
   }
 
   .site-footer>span:nth-child(2) {
@@ -459,7 +459,7 @@
   .admin-back {
     flex-shrink: 0;
     gap: 5px;
-    font-size: 9px;
+    font-size: 1rem;
   }
 
   .admin-main {
@@ -524,7 +524,7 @@
   }
 
   .admin-stats span {
-    font-size: 9px;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -547,7 +547,7 @@
   .content-section-tab {
     min-height: 46px;
     padding: 0 10px;
-    font-size: 10px;
+    font-size: 1rem;
   }
 
   .content-section-body {
@@ -654,7 +654,7 @@
   .brand-mark {
     width: 28px;
     height: 28px;
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .brand-name {
@@ -671,7 +671,7 @@
 
   .hero-intro {
     max-width: 290px;
-    font-size: 13px;
+    font-size: 1rem;
   }
 
   .hero-annotation {
@@ -688,11 +688,11 @@
   }
 
   .admin-header .brand-name {
-    font-size: 9px;
+    font-size: 1rem;
   }
 
   .admin-back {
-    font-size: 8px;
+    font-size: 1rem;
   }
 
   .admin-main {
@@ -709,7 +709,7 @@
 
   .admin-copyright {
     width: calc(100% - 24px);
-    font-size: 7px;
+    font-size: 1rem;
   }
 
   .hero-annotation,
@@ -718,13 +718,13 @@
   }
 
   .hero-bottom {
-    font-size: 7px;
+    font-size: 1rem;
     letter-spacing: .07em;
   }
 
   .header-year {
     gap: 5px;
-    font-size: 8px;
+    font-size: 1rem;
   }
 
 }
@@ -1001,7 +1001,7 @@
     gap: 8px;
     padding-right: 7px;
     padding-left: 7px;
-    font-size: 9px;
+    font-size: 1rem;
   }
 
   .admin-sidebar-subnav {
@@ -1124,7 +1124,7 @@
 
   .analytics-chart-x {
     gap: 5px;
-    font-size: 7px;
+    font-size: 1rem;
   }
 
   .content-section-nav {
@@ -1288,7 +1288,7 @@
   .content-section-tab {
     padding-right: 8px;
     padding-left: 8px;
-    font-size: 9px;
+    font-size: 1rem;
   }
 
   .content-entry-card,

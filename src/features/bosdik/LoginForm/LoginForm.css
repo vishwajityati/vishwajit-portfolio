@@ -1,0 +1,152 @@
+
+.auth-card {
+    width: min(420px, calc(100% - 40px));
+    margin: 9vh auto 0;
+    padding: 29px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(15, 20, 28, .83);
+    box-shadow: 0 20px 75px rgba(0, 0, 0, .23);
+}
+
+.auth-emblem {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 24px;
+    color: var(--mint);
+    border: 1px solid rgba(165, 241, 200, .24);
+    border-radius: 7px;
+    background: rgba(165, 241, 200, .07);
+}
+
+.auth-card .eyebrow {
+    margin-bottom: 0;
+}
+
+.auth-card h1 {
+    margin-top: 11px;
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+
+.auth-description {
+    margin: 12px 0 23px;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.auth-form {
+    display: grid;
+    gap: 15px;
+}
+
+.auth-form label {
+    display: grid;
+    gap: 8px;
+    color: #bbc1c8;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.auth-form input {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid rgba(255, 255, 255, .11);
+    border-radius: 6px;
+    outline: none;
+    color: var(--text);
+    background: #131d25;
+    font-size: 1rem;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.auth-password-field {
+    position: relative;
+    display: block;
+}
+
+.auth-password-field input {
+    padding-right: 44px;
+}
+
+.auth-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    display: grid;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 0;
+    color: var(--dim);
+    background: transparent;
+    cursor: pointer;
+}
+
+.auth-password-toggle:hover,
+.auth-password-toggle:focus-visible {
+    color: var(--text);
+}
+
+.auth-password-toggle:focus-visible {
+    outline: 2px solid rgba(165, 241, 200, .55);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.auth-cancel-totp {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 4px;
+    border: 0;
+    color: var(--muted);
+    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.auth-cancel-totp:hover,
+.auth-cancel-totp:focus-visible {
+    color: var(--text);
+}
+
+.auth-form input:focus {
+    border-color: rgba(165, 241, 200, .55);
+    box-shadow: 0 0 0 3px rgba(165, 241, 200, .06);
+}
+
+.auth-form input:-webkit-autofill,
+.auth-form input:-webkit-autofill:hover,
+.auth-form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text);
+    box-shadow: 0 0 0 1000px #131d25 inset;
+}
+
+.auth-form label small {
+    color: var(--dim);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 3px;
+}
+
+.auth-form .admin-message {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.auth-home {
+    margin-top: 23px;
+    font-size: 1rem;
+}

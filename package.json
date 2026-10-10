@@ -12,10 +12,10 @@
     "start": "next start --hostname localhost --port 3000",
     "start:lan": "node scripts/guard-public-bind.mjs && next start --hostname 0.0.0.0 --port 3000",
     "typecheck": "tsc --noEmit",
-    "admin:reset-code": "tsx prisma/reset-admin-code.ts",
-    "test:db-retry": "tsx --import ./prisma/shim-server-only.cjs prisma/test-db-retry.ts",
-    "test:csp": "tsx --import ./prisma/shim-css.cjs prisma/test-csp.tsx",
-    "test:coldstart": "tsx --import ./prisma/shim-server-only.cjs prisma/test-coldstart.ts",
+    "admin:reset-code": "tsx scripts/admin/reset-admin-code.ts",
+    "test:db-retry": "tsx --import ./scripts/shims/shim-server-only.cjs scripts/tests/test-db-retry.ts",
+    "test:csp": "tsx --import ./scripts/shims/shim-css.cjs scripts/tests/test-csp.tsx",
+    "test:coldstart": "tsx --import ./scripts/shims/shim-server-only.cjs scripts/tests/test-coldstart.ts",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@prisma/client": "6.12.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
     "@vercel/blob": "^2.8.0",
     "bcryptjs": "^2.4.3",
     "iron-session": "^8.0.4",
@@ -30,7 +32,8 @@
     "next": "^16.3.8",
     "nodemailer": "^10.0.14",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -38,6 +41,7 @@
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@types/three": "^0.186.0",
     "dotenv": "^16.4.7",
     "prisma": "6.12.0",
     "tsx": "^4.19.3",

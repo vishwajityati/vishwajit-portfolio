@@ -1,0 +1,10 @@
+cold start 1: OK in 3326ms (name source: real)
+cold start 2: OK in 286ms (name source: real)
+cold start 3: OK in 297ms (name source: real)
+cold start 4: OK in 314ms (name source: real)
+cold start 5: OK in 300ms (name source: real)
+cold start 6: OK in 315ms (name source: real)
+cold start 7: OK in 297ms (name source: real)
+cold start 8: OK in 341ms (name source: real)
+
+RESULT: 8/8 cold starts succeeded (0 failed)

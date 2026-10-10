@@ -37,25 +37,29 @@ document, which is a few KB and irrelevant at this scale.
 src/
   app/            Routes and route handlers (the only place Next.js conventions apply)
     api/          admin/security, auth/*, messages/*, portfolio
-  components/     Presentational React components
-    admin/        Dashboard shell + sections/ (one folder per editable section)
+  features/       Feature-owned UI; each component sits beside its own CSS
+    portfolio/    Public site: PortfolioApp plus one folder per section
+    bosdik/       Admin dashboard shell + sections/ (one folder per editable section)
+  components/     UI shared by more than one feature (background/)
+
   data/           Default content used for seeding and as a render fallback
   hooks/          Active-section tracking and scroll animations
   lib/            Server-side logic: data access, auth, validation, security
   styles/         Design tokens, resets, shared primitives, and breakpoints
   types/          Shared TypeScript types
-prisma/           Schema, PostgreSQL migrations, seed, admin CLI
+prisma/           Schema, PostgreSQL migrations, seed
+scripts/          Admin CLI, test scripts and shims, dev helpers
 docs/             This file and the other project documents
 ```
 
-The split that matters: **`components/` never talks to the database, and `lib/` never imports
+The split that matters: **`components/` and `features/` never talk to the database, and `lib/` never imports
 React.** All data access is funnelled through `src/lib`, so security-relevant logic (auth,
 validation, rate limiting) can be reviewed in one directory without wading through UI code.
 
 ### CSS organisation
 
 Styles are split by owning folder. A stylesheet named after a component lives in that
-component's directory (`components/about/About.css`, `components/resume/ResumeView.css`);
+component's directory (`features/portfolio/about/About.css`, `features/portfolio/resume/ResumeView.css`);
 anything genuinely shared lives in `src/styles/`:
 
 | File | Owns |
@@ -241,7 +245,7 @@ and the standard toolchain:
 | `npm run test:db-retry` | Error classification and retry semantics, against real Prisma error classes |
 | `npm run test:coldstart` | `getPortfolioContent()` survives repeated cold starts against the live database |
 
-The two test scripts load `prisma/shim-server-only.cjs`, which maps the `server-only` specifier
+The two test scripts load `scripts/shims/shim-server-only.cjs`, which maps the `server-only` specifier
 to an empty module. That package is supplied by Next.js at build time and is absent from
 `node_modules`, so a bare `tsx` run cannot otherwise resolve the `import "server-only"` guard
 that the rest of `src/lib` uses.

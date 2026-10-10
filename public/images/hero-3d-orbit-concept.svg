@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">3D orbital V monogram concept</title>
+  <desc id="desc">A glowing mint V monogram surrounded by elliptical orbit rings and particles on a dark technical background.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="70%">
+      <stop offset="0" stop-color="#162b2d"/>
+      <stop offset="0.48" stop-color="#0d171e"/>
+      <stop offset="1" stop-color="#080b11"/>
+    </radialGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.2" stop-color="#d6ffe8"/>
+      <stop offset="0.58" stop-color="#a5f1c8"/>
+      <stop offset="1" stop-color="#3b9b88"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6dc8a5"/>
+      <stop offset="1" stop-color="#173d3c"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="11" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="45"/>
+    </filter>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#a5f1c8" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="700" fill="url(#bg)"/>
+  <rect width="900" height="700" fill="url(#grid)" opacity=".55"/>
+  <ellipse cx="450" cy="355" rx="235" ry="165" fill="#76d9d1" opacity=".09" filter="url(#softGlow)"/>
+
+  <g fill="none" stroke-linecap="round">
+    <ellipse cx="450" cy="350" rx="294" ry="119" stroke="#a5f1c8" stroke-opacity=".3" stroke-width="2" transform="rotate(-19 450 350)"/>
+    <ellipse cx="450" cy="350" rx="254" ry="101" stroke="#76d9d1" stroke-opacity=".17" stroke-width="1" transform="rotate(35 450 350)"/>
+    <ellipse cx="450" cy="350" rx="184" ry="72" stroke="#b9a2ff" stroke-opacity=".25" stroke-width="1" transform="rotate(-61 450 350)"/>
+    <circle cx="450" cy="350" r="142" stroke="#a5f1c8" stroke-opacity=".08" stroke-dasharray="2 14"/>
+  </g>
+
+  <g fill="none" stroke="#e5fff0" stroke-opacity=".2" stroke-width="1">
+    <path d="M167 295 C274 136 594 115 738 286"/>
+    <path d="M174 413 C316 575 600 574 729 397"/>
+  </g>
+
+  <g opacity=".9" filter="url(#glow)">
+    <circle cx="190" cy="255" r="5" fill="#a5f1c8"/>
+    <circle cx="704" cy="244" r="4" fill="#76d9d1"/>
+    <circle cx="697" cy="476" r="6" fill="#b9a2ff"/>
+    <circle cx="282" cy="503" r="3" fill="#a5f1c8"/>
+  </g>
+
+  <g transform="translate(450 350)" filter="url(#glow)">
+    <path d="M-105 -96 L-28 92 Q0 145 28 92 L105 -96 L68 -96 L0 74 L-68 -96 Z" fill="#183e3c" opacity=".95" transform="translate(12 18)"/>
+    <path d="M-105 -96 L-28 92 Q0 145 28 92 L105 -96 L68 -96 L0 74 L-68 -96 Z" fill="url(#edge)" transform="translate(7 10)"/>
+    <path d="M-105 -96 L-28 92 Q0 145 28 92 L105 -96 L68 -96 L0 74 L-68 -96 Z" fill="url(#mint)"/>
+    <path d="M-105 -96 L-68 -96 L0 74 L0 111 Q-22 99 -28 92 Z" fill="#70cbaa" opacity=".74"/>
+    <path d="M105 -96 L68 -96 L0 74 L0 111 Q22 99 28 92 Z" fill="#428f85" opacity=".8"/>
+    <path d="M-105 -96 L-68 -96 L0 74 L68 -96 L105 -96" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="3"/>
+    <path d="M-66 -77 L0 78 L66 -77" fill="none" stroke="#ffffff" stroke-opacity=".36" stroke-width="2"/>
+  </g>
+
+  <g fill="#a5f1c8" font-family="monospace" font-size="12" letter-spacing="3" opacity=".7">
+    <text x="48" y="58">ORBITAL IDENTITY / 01</text>
+    <text x="48" y="644">VISHWAJIT YATI / CREATIVE DEVELOPER</text>
+    <text x="770" y="58">3D / 01</text>
+  </g>
+  <path d="M48 78H235M48 624H326M760 78H852" stroke="#a5f1c8" stroke-opacity=".35"/>
+</svg>
